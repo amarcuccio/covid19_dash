@@ -26,7 +26,7 @@ class SummaryPane extends Component {
   }
 
   render() {
-    const { loading, summary, updated } = this.state;
+    const { loading, summary } = this.state;
     const { classes } = this.props;
     return (
       <Container className={classes.root}>
@@ -37,35 +37,32 @@ class SummaryPane extends Component {
               direction="row"
               justify="center"
               alignItems="center"
-              spacing={4}
+              spacing={3}
             >
               {loading || !summary ? (
                 <>
-                  <SummaryCard title="" digit="" loading={loading} />
-                  <SummaryCard title="" digit="" loading={loading} />
-                  <SummaryCard title="" digit="" loading={loading} />
+                  <SummaryCard loading={loading} />
+                  <SummaryCard loading={loading} />
+                  <SummaryCard loading={loading} />
                 </>
               ) : (
                 <>
                   <SummaryCard
                     title={'Total Cases'}
-                    digit={summary.TotalConfirmed}
+                    data={summary.TotalConfirmed}
                   />
                   <SummaryCard
                     title={'Total Deaths'}
-                    digit={summary.TotalDeaths}
+                    data={summary.TotalDeaths}
                   />
                   <SummaryCard
                     title={'Total Recovered'}
-                    digit={summary.TotalRecovered}
+                    data={summary.TotalRecovered}
                   />
                 </>
               )}
             </Grid>
           </div>
-          {loading || !summary
-            ? 'Data is being loaded...'
-            : `Data Reported: ${updated}`}
         </div>
       </Container>
     );

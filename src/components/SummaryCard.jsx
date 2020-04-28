@@ -11,10 +11,9 @@ import styles from '../styles/SummaryCardStyles';
 
 class SummaryCard extends Component {
   render() {
-    const { classes } = this.props;
-    const { title, digit, loading } = this.props;
+    const { classes, title, data, loading } = this.props;
     return (
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <Card>
           <CardContent className={classes.CardContent}>
             {loading ? (
@@ -25,7 +24,7 @@ class SummaryCard extends Component {
                   {title}
                 </Typography>
                 <Typography variant="h3" component="p">
-                  <CountUp start={0} end={digit} duration={1} separator="," />
+                  <CountUp start={0} end={data} duration={1} separator="," />
                 </Typography>
               </>
             )}
