@@ -32,7 +32,7 @@ class CreditDialog extends Component {
           </DialogTitle>
           <DialogContent dividers>
             <Typography gutterBottom>
-              This Application was developed to view live COVID-19 related data
+              This application was developed to view live COVID-19 related data
               at a glance.
             </Typography>
             <Typography gutterBottom>
@@ -47,8 +47,10 @@ class CreditDialog extends Component {
                 Engineering.
               </Link>
             </Typography>
+            <Typography variant="h6" gutterBottom>
+              Toolset
+            </Typography>
             <Typography gutterBottom>
-              <h3>Toolset</h3>
               <ul>
                 <li>
                   <Link
@@ -132,8 +134,10 @@ class CreditDialog extends Component {
                 </li>
               </ul>
             </Typography>
+            <Typography variant="h6" gutterBottom>
+              Credits
+            </Typography>
             <Typography gutterBottom>
-              <h3>Credits</h3>
               <ul>
                 <li>
                   Icon: made by{' '}
@@ -175,19 +179,19 @@ class CreditDialog extends Component {
                 </li>
               </ul>
             </Typography>
+            <Typography variant="h6" gutterBottom>
+              Code Repository
+            </Typography>
             <Typography gutterBottom>
-              <h3>Code Repository</h3>
-              <p>
-                Check out the code for this app on{' '}
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://github.com/amarcuccio/covid19_dash"
-                >
-                  GitHub
-                </Link>
-                .
-              </p>
+              Check out the code for this app on{' '}
+              <Link
+                target="_blank"
+                rel="noopener"
+                href="https://github.com/amarcuccio/covid19_dash"
+              >
+                GitHub
+              </Link>
+              .
             </Typography>
           </DialogContent>
         </Dialog>
