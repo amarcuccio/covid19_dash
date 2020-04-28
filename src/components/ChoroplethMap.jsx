@@ -6,7 +6,6 @@ import {
   Geography,
   Graticule,
   Sphere,
-  Line,
   ZoomableGroup,
 } from 'react-simple-maps';
 import { Container } from '@material-ui/core';
@@ -59,17 +58,6 @@ export default class ChoroplethMap extends Component {
                   })
                 }
               </Geographies>
-              <Line
-                coordinates={[
-                  [-180, 0],
-                  [-90, 0],
-                  [0, 0],
-                  [90, 0],
-                  [180, 0],
-                ]}
-                stroke="#EB5569"
-                strokeWidth={2}
-              />
             </ZoomableGroup>
           </ComposableMap>
         </Container>

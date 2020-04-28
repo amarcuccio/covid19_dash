@@ -23,11 +23,80 @@ class CreditModal extends Component {
             Johns Hopkins University Center for Systems Science and Engineering.
           </Link>
         </p>
-        <h2>Technologies Used</h2>
+        <h2>Toolset</h2>
         <ul>
-          <li>React (UI library)</li>
-          <li>Create-React-App (development configuration)</li>
-          <li>Material-UI (UI & Component Library)</li>
+          <li>
+            <Link target="_blank" rel="noopener" href="https://reactjs.org/">
+              React
+            </Link>{' '}
+            (JavaScript library.)
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://create-react-app.dev/"
+            >
+              Create React App
+            </Link>{' '}
+            (React application development configuration.)
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://material-ui.com/"
+            >
+              Material-UI
+            </Link>{' '}
+            (User Interface & Component Library.)
+          </li>
+          <li>
+            <Link target="_blank" rel="noopener" href="https://momentjs.com/">
+              Moment.js
+            </Link>{' '}
+            (JavaScript parsing tool for date and time manipulation.)
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://www.react-simple-maps.io/"
+            >
+              React Simple Maps
+            </Link>{' '}
+            (SVG maps in React.)
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://github.com/d3/d3-geo"
+            >
+              d3-geo
+            </Link>{' '}
+            (Geographic projections.)
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://github.com/topojson/topojson"
+            >
+              topojson
+            </Link>{' '}
+            (GeoJSON extension for topological encoding.)
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://react-countup.now.sh/"
+            >
+              React CountUp
+            </Link>{' '}
+            (Fancy numeric rendering wrapper.)
+          </li>
         </ul>
         <h2>Credits</h2>
 
@@ -51,7 +120,34 @@ class CreditModal extends Component {
             </Link>
             .
           </li>
+          <li>
+            Data API: provided by{' '}
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://twitter.com/ksredelinghuys"
+            >
+              Kyle Redelinghuys
+            </Link>{' '}
+            at{' '}
+            <Link target="_blank" rel="noopener" href="https://covid19api.com/">
+              www.covid19api.com
+            </Link>
+            .
+          </li>
         </ul>
+        <h2>Code Repository</h2>
+        <p>
+          Check out the code for this app on{' '}
+          <Link
+            target="_blank"
+            rel="noopener"
+            href="https://github.com/amarcuccio/covid19_dash"
+          >
+            GitHub
+          </Link>
+          .
+        </p>
       </div>
     );
     return (
