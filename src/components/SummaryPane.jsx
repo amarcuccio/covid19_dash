@@ -31,35 +31,41 @@ class SummaryPane extends Component {
     return (
       <Container className={classes.root}>
         <div>
-          {loading || !summary ? (
-            <div>
-              <h1>Loading...</h1>
-            </div>
-          ) : (
-            <div>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                spacing={3}
-              >
-                <SummaryCard
-                  title={'Total Cases'}
-                  digit={summary.TotalConfirmed}
-                />
-                <SummaryCard
-                  title={'Total Deaths'}
-                  digit={summary.TotalDeaths}
-                />
-                <SummaryCard
-                  title={'Total Recovered'}
-                  digit={summary.TotalRecovered}
-                />
-              </Grid>
-            </div>
-          )}
-          Last Updated: {updated}
+          <div>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              spacing={4}
+            >
+              {loading || !summary ? (
+                <>
+                  <SummaryCard title="" digit="" loading={loading} />
+                  <SummaryCard title="" digit="" loading={loading} />
+                  <SummaryCard title="" digit="" loading={loading} />
+                </>
+              ) : (
+                <>
+                  <SummaryCard
+                    title={'Total Cases'}
+                    digit={summary.TotalConfirmed}
+                  />
+                  <SummaryCard
+                    title={'Total Deaths'}
+                    digit={summary.TotalDeaths}
+                  />
+                  <SummaryCard
+                    title={'Total Recovered'}
+                    digit={summary.TotalRecovered}
+                  />
+                </>
+              )}
+            </Grid>
+          </div>
+          {loading || !summary
+            ? 'Data is being loaded...'
+            : `Data Reported: ${updated}`}
         </div>
       </Container>
     );
