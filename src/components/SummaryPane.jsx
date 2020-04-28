@@ -31,38 +31,36 @@ class SummaryPane extends Component {
     return (
       <Container className={classes.root}>
         <div>
-          <div>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-              spacing={3}
-            >
-              {loading || !summary ? (
-                <>
-                  <SummaryCard loading={loading} />
-                  <SummaryCard loading={loading} />
-                  <SummaryCard loading={loading} />
-                </>
-              ) : (
-                <>
-                  <SummaryCard
-                    title={'Total Cases'}
-                    data={summary.TotalConfirmed}
-                  />
-                  <SummaryCard
-                    title={'Total Deaths'}
-                    data={summary.TotalDeaths}
-                  />
-                  <SummaryCard
-                    title={'Total Recovered'}
-                    data={summary.TotalRecovered}
-                  />
-                </>
-              )}
-            </Grid>
-          </div>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={3}
+          >
+            {loading || !summary ? (
+              <>
+                <SummaryCard loading={loading} />
+                <SummaryCard loading={loading} />
+                <SummaryCard loading={loading} />
+              </>
+            ) : (
+              <>
+                <SummaryCard
+                  title={'Total Cases'}
+                  data={summary.TotalConfirmed}
+                />
+                <SummaryCard
+                  title={'Total Deaths'}
+                  data={summary.TotalDeaths}
+                />
+                <SummaryCard
+                  title={'Total Recovered'}
+                  data={summary.TotalRecovered}
+                />
+              </>
+            )}
+          </Grid>
         </div>
       </Container>
     );
