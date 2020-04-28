@@ -37,12 +37,12 @@ class Navbar extends Component {
                 Coronavirus Dashboard
               </Typography>
               <Button
-                className={classes.menuButton}
-                startIcon={<InfoIcon />}
+                startIcon={<InfoIcon className={classes.buttonIcon} />}
                 color="inherit"
                 onClick={this.handleOpen}
+                size="large"
               >
-                About
+                <span className={classes.buttonText}>About</span>
               </Button>
             </Toolbar>
           </Container>

@@ -10,6 +10,16 @@ const styles = (theme) => ({
     marginRight: '20px',
     marginLeft: '-25px',
   },
+  buttonText: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  buttonIcon: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '30px !important',
+    },
+  },
 });
 
 export default styles;
