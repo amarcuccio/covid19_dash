@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Container } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import CreditModal from '../components/CreditModal';
+import CreditDialog from '../components/CreditDialog';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
 import Typography from '@material-ui/core/Typography';
@@ -13,21 +13,21 @@ import styles from '../styles/NavbarStyles';
 
 class Navbar extends Component {
   state = {
-    modalOpen: false,
+    dialogOpen: false,
   };
   handleOpen = () => {
-    this.setState({ modalOpen: true });
+    this.setState({ dialogOpen: true });
   };
   handleClose = () => {
-    this.setState({ modalOpen: false });
+    this.setState({ dialogOpen: false });
   };
   render() {
     const { classes } = this.props;
-    const { modalOpen } = this.state;
+    const { dialogOpen } = this.state;
     return (
       <div className={classes.root}>
-        {modalOpen && (
-          <CreditModal open={this.state.modalOpen} close={this.handleClose} />
+        {dialogOpen && (
+          <CreditDialog open={dialogOpen} close={this.handleClose} />
         )}
         <AppBar position="static">
           <Container>
