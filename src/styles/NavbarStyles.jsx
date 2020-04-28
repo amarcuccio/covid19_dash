@@ -11,14 +11,24 @@ const styles = (theme) => ({
     marginLeft: '-25px',
   },
   buttonText: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
   },
   buttonIcon: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: '30px !important',
       marginRight: '-30px',
+    },
+  },
+  titleTextSm: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+  },
+  titleTextXs: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
     },
   },
 });

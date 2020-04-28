@@ -34,7 +34,8 @@ class Navbar extends Component {
             <Toolbar>
               <img src={VirusImage} alt="logo" className={classes.logo} />
               <Typography className={classes.title} variant="h6">
-                Coronavirus Dashboard
+                <span className={classes.titleTextSm}>Coronavirus</span>
+                <span className={classes.titleTextXs}>COVID-19</span> Dashboard
               </Typography>
               <Button
                 startIcon={<InfoIcon className={classes.buttonIcon} />}
