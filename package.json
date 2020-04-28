@@ -1,6 +1,6 @@
 {
   "name": "covid19_tracker",
-  "homepage": "https://marcucc.io/covid19",
+  "homepage": "https://covid19.marcucc.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
