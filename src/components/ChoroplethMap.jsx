@@ -67,7 +67,7 @@ export default class ChoroplethMap extends Component {
                   [90, 0],
                   [180, 0],
                 ]}
-                stroke="#F53"
+                stroke="#EB5569"
                 strokeWidth={2}
               />
             </ZoomableGroup>
