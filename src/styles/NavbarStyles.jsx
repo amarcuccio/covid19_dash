@@ -18,6 +18,7 @@ const styles = (theme) => ({
   buttonIcon: {
     [theme.breakpoints.down('sm')]: {
       fontSize: '30px !important',
+      marginRight: '-30px',
     },
   },
 });
