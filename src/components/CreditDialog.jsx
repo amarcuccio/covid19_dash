@@ -93,7 +93,7 @@ function CreditDialog(props) {
                 >
                   Font Awesome
                 </Link>{' '}
-                (Vector Icons)
+                (Vector icons.)
               </li>
               <li>
                 <Link
