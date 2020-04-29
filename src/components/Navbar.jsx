@@ -38,6 +38,7 @@ class Navbar extends Component {
                 <span className={classes.titleTextXs}>COVID-19</span> Dashboard
               </Typography>
               <Button
+                className={classes.button}
                 startIcon={<InfoIcon className={classes.buttonIcon} />}
                 color="inherit"
                 onClick={this.handleOpen}

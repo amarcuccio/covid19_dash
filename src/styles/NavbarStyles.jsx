@@ -4,11 +4,19 @@ const styles = (theme) => ({
   },
   title: {
     flexGrow: 1,
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+    },
   },
   logo: {
     height: '50px',
     marginRight: '20px',
     marginLeft: '-25px',
+  },
+  button: {
+    [theme.breakpoints.down('xs')]: {
+      paddingRight: '0px',
+    },
   },
   buttonText: {
     [theme.breakpoints.down('xs')]: {
@@ -19,6 +27,7 @@ const styles = (theme) => ({
     [theme.breakpoints.down('xs')]: {
       fontSize: '30px !important',
       marginRight: '-30px',
+      paddingRight: '0px',
     },
   },
   titleTextSm: {
