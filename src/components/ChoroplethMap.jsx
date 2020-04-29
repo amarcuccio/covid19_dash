@@ -35,7 +35,7 @@ export default class ChoroplethMap extends Component {
     return (
       <div>
         <Container>
-          <Typography variant="h5">
+          <Typography variant="h6">
             Interactive Map - Statistics by Country
           </Typography>
         </Container>

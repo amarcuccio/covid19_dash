@@ -1,7 +1,13 @@
 const styles = (theme) => ({
   root: {
-    marginTop: '2em',
-    marginBottom: '2em',
+    marginTop: '1.5em',
+    marginBottom: '1.5em',
+  },
+  title: {
+    marginBottom: '1.5em',
+  },
+  updated: {
+    fontStyle: 'oblique',
   },
 });
 

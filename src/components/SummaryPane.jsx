@@ -4,6 +4,7 @@ import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import SummaryCard from './SummaryCard';
 import moment from 'moment';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/SummaryPaneStyles';
 
@@ -26,10 +27,20 @@ class SummaryPane extends Component {
   }
 
   render() {
-    const { loading, summary } = this.state;
+    const { loading, summary, updated } = this.state;
     const { classes } = this.props;
     return (
       <Container className={classes.root}>
+        <div className={classes.title}>
+          <Typography variant="h6">World Case Summary</Typography>
+          <Typography
+            className={classes.updated}
+            variant="caption"
+            gutterBottom
+          >
+            Last updated at: {updated} EDT
+          </Typography>
+        </div>
         <div>
           <Grid
             container
