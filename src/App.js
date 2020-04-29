@@ -9,9 +9,17 @@ import {
   faFileMedical,
   faHeart,
   faSkullCrossbones,
+  faArrowAltCircleUp,
+  faArrowAltCircleDown,
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faFileMedical, faHeart, faSkullCrossbones);
+library.add(
+  faFileMedical,
+  faHeart,
+  faSkullCrossbones,
+  faArrowAltCircleUp,
+  faArrowAltCircleDown
+);
 
 export default class App extends Component {
   render() {

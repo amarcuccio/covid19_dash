@@ -1,7 +1,4 @@
 const styles = (theme) => ({
-  root: {
-    display: 'flex',
-  },
   details: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -27,6 +24,9 @@ const styles = (theme) => ({
       marginTop: '1em',
       width: '100%',
     },
+  },
+  countIcon: {
+    marginRight: '0.5em',
   },
 });
 

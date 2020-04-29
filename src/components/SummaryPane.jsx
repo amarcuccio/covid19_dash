@@ -38,7 +38,7 @@ class SummaryPane extends Component {
             variant="caption"
             gutterBottom
           >
-            Last updated at: {updated} EDT
+            Last update: {updated} EDT
           </Typography>
         </div>
         <div>
@@ -59,21 +59,24 @@ class SummaryPane extends Component {
               <>
                 <SummaryCard
                   title={'Cases'}
-                  data={summary.TotalConfirmed}
+                  total={summary.TotalConfirmed}
                   icon={'file-medical'}
                   color={'#2962FF'}
+                  additional={summary.NewConfirmed}
                 />
                 <SummaryCard
                   title={'Recovered'}
-                  data={summary.TotalRecovered}
+                  total={summary.TotalRecovered}
                   icon={'heart'}
                   color={'#00C853'}
+                  additional={summary.NewRecovered}
                 />
                 <SummaryCard
                   title={'Deaths'}
-                  data={summary.TotalDeaths}
+                  total={summary.TotalDeaths}
                   icon={'skull-crossbones'}
                   color={'#D50000'}
+                  additional={summary.NewDeaths}
                 />
               </>
             )}

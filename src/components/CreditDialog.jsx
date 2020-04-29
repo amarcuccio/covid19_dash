@@ -89,6 +89,16 @@ function CreditDialog(props) {
                 <Link
                   target="_blank"
                   rel="noopener"
+                  href="https://fontawesome.com/"
+                >
+                  Font Awesome
+                </Link>{' '}
+                (Vector Icons)
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  rel="noopener"
                   href="https://momentjs.com/"
                 >
                   Moment.js
@@ -143,7 +153,7 @@ function CreditDialog(props) {
           <Typography gutterBottom>
             <ul>
               <li>
-                Icon: made by{' '}
+                Logo: made by{' '}
                 <Link
                   target="_blank"
                   rel="noopener"

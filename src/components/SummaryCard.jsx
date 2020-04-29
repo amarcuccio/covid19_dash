@@ -12,11 +12,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SummaryCard extends Component {
   render() {
-    const { classes, title, data, loading, icon, color } = this.props;
+    const {
+      classes,
+      title,
+      total,
+      additional,
+      loading,
+      icon,
+      color,
+    } = this.props;
     return (
       <Grid item xs={4} md={3}>
         <Card>
-          <CardContent className={classes.root}>
+          <CardContent>
             {loading ? (
               <Skeleton animation="wave" variant="rect" height={88} />
             ) : (
@@ -26,10 +34,27 @@ class SummaryCard extends Component {
                 </div>
                 <div className={classes.content}>
                   <Typography variant="subtitle1">{title}</Typography>
-                  <Typography variant="h6">
+                  <Typography variant="h6" gutterBottom>
                     <CountUp
                       start={0}
-                      end={data}
+                      end={total}
+                      duration={0.75}
+                      separator=","
+                    />
+                  </Typography>
+                  <Typography variant="caption">
+                    <FontAwesomeIcon
+                      className={classes.countIcon}
+                      icon={
+                        Math.sign(additional) === 1
+                          ? 'arrow-alt-circle-up'
+                          : 'arrow-alt-circle-down'
+                      }
+                      color={color}
+                    />
+                    <CountUp
+                      start={0}
+                      end={additional}
                       duration={0.75}
                       separator=","
                     />
