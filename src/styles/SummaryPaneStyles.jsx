@@ -8,6 +8,10 @@ const styles = (theme) => ({
   },
   updated: {
     fontStyle: 'oblique',
+    textAlign: 'right',
+  },
+  grid: {
+    marginBottom: '1.5em',
   },
 });
 

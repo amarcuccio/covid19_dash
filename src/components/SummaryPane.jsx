@@ -7,6 +7,8 @@ import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/SummaryPaneStyles';
+import { Divider } from '@material-ui/core';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 class SummaryPane extends Component {
   state = {
@@ -15,34 +17,38 @@ class SummaryPane extends Component {
     updated: null,
   };
 
-  async componentDidMount() {
-    const URL = 'https://api.covid19api.com/summary';
-    const response = await fetch(URL);
-    const data = await response.json();
-    this.setState({
-      summary: data.Global,
-      updated: moment(data.Date).format('MMMM Do YYYY [at] hh:mm:ss A'),
-      loading: false,
-    });
+  componentDidMount() {
+    this.loadData();
+    setInterval(this.loadData, 900000);
   }
+
+  loadData = async () => {
+    try {
+      const URL = 'https://api.covid19api.com/summary';
+      const response = await fetch(URL);
+      const data = await response.json();
+      this.setState({
+        summary: data.Global,
+        updated: moment(data.Date).format('MMMM Do YYYY [at] hh:mm:ss A'),
+        loading: false,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   render() {
     const { loading, summary, updated } = this.state;
     const { classes } = this.props;
+
     return (
       <Container className={classes.root}>
         <div className={classes.title}>
           <Typography variant="h6">World Case Summary</Typography>
-          <Typography
-            className={classes.updated}
-            variant="caption"
-            gutterBottom
-          >
-            Last update: {updated} EDT
-          </Typography>
         </div>
         <div>
           <Grid
+            className={classes.grid}
             container
             direction="row"
             justify="center"
@@ -81,6 +87,14 @@ class SummaryPane extends Component {
               </>
             )}
           </Grid>
+        </div>
+        <div className={classes.updated}>
+          <Typography textAlign="right" variant="caption">
+            {loading || !summary
+              ? 'Refreshing data ... '
+              : `Last update: ${updated} EDT`}
+          </Typography>
+          {loading || !summary ? <LinearProgress /> : <Divider />}
         </div>
       </Container>
     );

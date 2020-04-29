@@ -26,7 +26,21 @@ class SummaryCard extends Component {
         <Card>
           <CardContent>
             {loading ? (
-              <Skeleton animation="wave" variant="rect" height={88} />
+              <div className={classes.details}>
+                <div className={classes.icon}>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    height={86}
+                    width={70}
+                  />
+                </div>
+                <div className={classes.content}>
+                  <Skeleton animation="wave" variant="text" width={100} />
+                  <Skeleton animation="wave" variant="text" width={100} />
+                  <Skeleton animation="wave" variant="text" width={100} />
+                </div>
+              </div>
             ) : (
               <div className={classes.details}>
                 <div className={classes.icon}>
