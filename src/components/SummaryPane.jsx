@@ -36,7 +36,7 @@ class SummaryPane extends Component {
             direction="row"
             justify="center"
             alignItems="center"
-            spacing={3}
+            spacing={2}
           >
             {loading || !summary ? (
               <>
@@ -47,16 +47,19 @@ class SummaryPane extends Component {
             ) : (
               <>
                 <SummaryCard
-                  title={'Total Cases'}
+                  title={'Cases'}
                   data={summary.TotalConfirmed}
+                  icon={'file-medical'}
                 />
                 <SummaryCard
-                  title={'Total Deaths'}
-                  data={summary.TotalDeaths}
-                />
-                <SummaryCard
-                  title={'Total Recovered'}
+                  title={'Recovered'}
                   data={summary.TotalRecovered}
+                  icon={'heart'}
+                />
+                <SummaryCard
+                  title={'Deaths'}
+                  data={summary.TotalDeaths}
+                  icon={'skull-crossbones'}
                 />
               </>
             )}

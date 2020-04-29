@@ -4,6 +4,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Navbar from './components/Navbar';
 import SummaryPane from './components/SummaryPane';
 import ChoroplethMap from './components/ChoroplethMap';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faFileMedical,
+  faHeart,
+  faSkullCrossbones,
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faFileMedical, faHeart, faSkullCrossbones);
 
 export default class App extends Component {
   render() {

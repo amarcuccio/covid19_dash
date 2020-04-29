@@ -8,25 +8,29 @@ import Typography from '@material-ui/core/Typography';
 import CountUp from 'react-countup';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/SummaryCardStyles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SummaryCard extends Component {
   render() {
-    const { classes, title, data, loading } = this.props;
+    const { classes, title, data, loading, icon } = this.props;
     return (
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={4} md={3}>
         <Card>
-          <CardContent className={classes.CardContent}>
+          <CardContent className={classes.root}>
             {loading ? (
               <Skeleton animation="wave" variant="rect" height={88} />
             ) : (
-              <>
-                <Typography variant="h5" component="h2">
-                  {title}
-                </Typography>
-                <Typography variant="h3" component="p">
-                  <CountUp start={0} end={data} duration={1} separator="," />
-                </Typography>
-              </>
+              <div className={classes.details}>
+                <div className={classes.icon}>
+                  <FontAwesomeIcon icon={icon} size="3x" />
+                </div>
+                <div className={classes.content}>
+                  <Typography variant="subtitle1">{title}</Typography>
+                  <Typography variant="h5">
+                    <CountUp start={0} end={data} duration={1} separator="," />
+                  </Typography>
+                </div>
+              </div>
             )}
           </CardContent>
         </Card>
