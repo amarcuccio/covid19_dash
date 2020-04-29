@@ -26,7 +26,7 @@ class SummaryCard extends Component {
                 </div>
                 <div className={classes.content}>
                   <Typography variant="subtitle1">{title}</Typography>
-                  <Typography variant="h5">
+                  <Typography variant="h6">
                     <CountUp
                       start={0}
                       end={data}
