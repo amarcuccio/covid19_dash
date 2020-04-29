@@ -35,9 +35,7 @@ export default class ChoroplethMap extends Component {
     return (
       <div>
         <Container>
-          <Typography variant="h6">
-            Interactive Map - Statistics by Country
-          </Typography>
+          <Typography variant="h6">Interactive Map</Typography>
         </Container>
         <Container>
           <ComposableMap projectionConfig={projectionConfig} height={400}>

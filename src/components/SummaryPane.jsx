@@ -61,16 +61,19 @@ class SummaryPane extends Component {
                   title={'Cases'}
                   data={summary.TotalConfirmed}
                   icon={'file-medical'}
+                  color={'#2962FF'}
                 />
                 <SummaryCard
                   title={'Recovered'}
                   data={summary.TotalRecovered}
                   icon={'heart'}
+                  color={'#00C853'}
                 />
                 <SummaryCard
                   title={'Deaths'}
                   data={summary.TotalDeaths}
                   icon={'skull-crossbones'}
+                  color={'#D50000'}
                 />
               </>
             )}
