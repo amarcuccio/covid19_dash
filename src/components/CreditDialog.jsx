@@ -10,11 +10,78 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import {
+  ReactLogo,
+  NodejsLogo,
+  YarnLogo,
+  GithubLogo,
+  CraLogo,
+  MuiLogo,
+  D3Logo,
+  FaLogo,
+  MomentjsLogo,
+  RsmLogo,
+} from '../images/logos';
 
 function CreditDialog(props) {
   const { classes, open, close } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
+  const tools = [
+    {
+      source: ReactLogo,
+      title: 'React',
+      url: 'https://reactjs.org/',
+    },
+    {
+      source: NodejsLogo,
+      title: 'Node.js',
+      url: 'https://nodejs.org/en/',
+    },
+    {
+      source: YarnLogo,
+      title: 'Yarn',
+      url: 'https://yarnpkg.com/',
+    },
+    {
+      source: GithubLogo,
+      title: 'GitHub',
+      url: 'https://github.com/',
+    },
+    {
+      source: CraLogo,
+      title: 'Create React App',
+      url: 'https://create-react-app.dev/',
+    },
+    {
+      source: MuiLogo,
+      title: 'Material-UI',
+      url: 'https://material-ui.com/',
+    },
+    {
+      source: D3Logo,
+      title: 'D3.js',
+      url: 'https://d3js.org/',
+    },
+    {
+      source: FaLogo,
+      title: 'Font Awesome',
+      url: 'https://fontawesome.com/',
+    },
+    {
+      source: MomentjsLogo,
+      title: 'Moment.js',
+      url: 'https://momentjs.com/',
+    },
+    {
+      source: RsmLogo,
+      title: 'React Simple Maps',
+      url: 'https://www.react-simple-maps.io/',
+    },
+  ];
   return (
     <div>
       <Dialog
@@ -24,7 +91,7 @@ function CreditDialog(props) {
         fullScreen={fullScreen}
       >
         <DialogTitle id="customized-dialog-title">
-          About This Dashboard
+          About This Project
           <IconButton
             aria-label="close"
             className={classes.closeButton}
@@ -35,151 +102,49 @@ function CreditDialog(props) {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            This application was developed to view live COVID-19 related data at
-            a glance.
-          </Typography>
-          <Typography gutterBottom>
-            The figures are fetched from a public API that collects them from a
-            verified source:{' '}
+            This application was developed to view live Coronavirus Disease
+            (COVID-19) related data at a glance. The figures displayed on the
+            site are fetched from a public API that collects and compiles them
+            from a verified, reputable source:{' '}
             <Link
               target="_blank"
               rel="noopener"
               href="https://systems.jhu.edu/research/public-health/ncov/"
             >
               Johns Hopkins University Center for Systems Science and
-              Engineering.
+              Engineering
             </Link>
+            .
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Toolset
+            Development Toolset
+          </Typography>
+          <Grid container spacing={3}>
+            {tools.map((tool) => (
+              <Grid item xs={3}>
+                <Paper className={classes.item}>
+                  <ButtonBase className={classes.image}>
+                    <a href={tool.url}>
+                      <img
+                        className={classes.img}
+                        alt={tool.title}
+                        src={tool.source}
+                        title={tool.title}
+                        key={tool.title}
+                      />
+                    </a>
+                  </ButtonBase>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+          <Typography variant="h6" gutterBottom>
+            Credits / Attributions
           </Typography>
           <Typography gutterBottom>
             <ul>
               <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://nodejs.org/en/"
-                >
-                  Node.js
-                </Link>{' '}
-                (JavaScript runtime.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://yarnpkg.com/"
-                >
-                  Yarn
-                </Link>{' '}
-                (Package and project manager.)
-              </li>
-              <li>
-                <Link target="_blank" rel="noopener" href="https://github.com/">
-                  GitHub
-                </Link>{' '}
-                (Development platform / source code repository.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://reactjs.org/"
-                >
-                  React
-                </Link>{' '}
-                (JavaScript library.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://create-react-app.dev/"
-                >
-                  Create React App
-                </Link>{' '}
-                (React application development configuration.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://material-ui.com/"
-                >
-                  Material-UI
-                </Link>{' '}
-                (User Interface & Component Library.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://fontawesome.com/"
-                >
-                  Font Awesome
-                </Link>{' '}
-                (Vector icons.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://momentjs.com/"
-                >
-                  Moment.js
-                </Link>{' '}
-                (JavaScript parsing tool for date and time manipulation.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://www.react-simple-maps.io/"
-                >
-                  React Simple Maps
-                </Link>{' '}
-                (SVG maps in React.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://github.com/d3/d3-geo"
-                >
-                  d3-geo
-                </Link>{' '}
-                (Geographic projections.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://github.com/topojson/topojson"
-                >
-                  topojson
-                </Link>{' '}
-                (GeoJSON extension for topological encoding.)
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://react-countup.now.sh/"
-                >
-                  React CountUp
-                </Link>{' '}
-                (Fancy numeric rendering wrapper.)
-              </li>
-            </ul>
-          </Typography>
-          <Typography variant="h6" gutterBottom>
-            Credits
-          </Typography>
-          <Typography gutterBottom>
-            <ul>
-              <li>
-                Virus logo: made by{' '}
+                Logo: created by{' '}
                 <Link
                   target="_blank"
                   rel="noopener"

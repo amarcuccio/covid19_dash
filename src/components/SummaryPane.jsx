@@ -89,7 +89,7 @@ class SummaryPane extends Component {
           </Grid>
         </div>
         <div className={classes.updated}>
-          <Typography textAlign="right" variant="caption">
+          <Typography variant="caption">
             {loading || !summary
               ? 'Refreshing data ... '
               : `Last update: ${updated} EDT`}

@@ -1,0 +1,10 @@
+export const ReactLogo = require('./react.svg');
+export const NodejsLogo = require('./nodejs.svg');
+export const YarnLogo = require('./yarn.svg');
+export const GithubLogo = require('./github.svg');
+export const CraLogo = require('./cra.svg');
+export const MuiLogo = require('./mui.svg');
+export const D3Logo = require('./d3.svg');
+export const FaLogo = require('./fa.svg');
+export const MomentjsLogo = require('./momentjs.svg');
+export const RsmLogo = require('./rsm.svg');

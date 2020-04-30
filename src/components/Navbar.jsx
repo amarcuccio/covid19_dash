@@ -7,7 +7,7 @@ import CreditDialog from '../components/CreditDialog';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
 import Typography from '@material-ui/core/Typography';
-import VirusImage from '../images/virus.png';
+import VirusImage from '../images/main/virus.png';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/NavbarStyles';
 
