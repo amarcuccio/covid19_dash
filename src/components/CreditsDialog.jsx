@@ -13,6 +13,8 @@ import { useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Box from '@material-ui/core/Box';
+
 import {
   ReactLogo,
   NodejsLogo,
@@ -37,21 +39,6 @@ function CreditsDialog(props) {
       url: 'https://reactjs.org/',
     },
     {
-      source: NodejsLogo,
-      title: 'Node.js',
-      url: 'https://nodejs.org/en/',
-    },
-    {
-      source: YarnLogo,
-      title: 'Yarn',
-      url: 'https://yarnpkg.com/',
-    },
-    {
-      source: GithubLogo,
-      title: 'GitHub',
-      url: 'https://github.com/',
-    },
-    {
       source: CraLogo,
       title: 'Create React App',
       url: 'https://create-react-app.dev/',
@@ -67,9 +54,24 @@ function CreditsDialog(props) {
       url: 'https://d3js.org/',
     },
     {
-      source: FaLogo,
-      title: 'Font Awesome',
-      url: 'https://fontawesome.com/',
+      source: RsmLogo,
+      title: 'React Simple Maps',
+      url: 'https://www.react-simple-maps.io/',
+    },
+    {
+      source: NodejsLogo,
+      title: 'Node.js',
+      url: 'https://nodejs.org/en/',
+    },
+    {
+      source: YarnLogo,
+      title: 'Yarn',
+      url: 'https://yarnpkg.com/',
+    },
+    {
+      source: GithubLogo,
+      title: 'GitHub',
+      url: 'https://github.com/',
     },
     {
       source: MomentjsLogo,
@@ -77,9 +79,9 @@ function CreditsDialog(props) {
       url: 'https://momentjs.com/',
     },
     {
-      source: RsmLogo,
-      title: 'React Simple Maps',
-      url: 'https://www.react-simple-maps.io/',
+      source: FaLogo,
+      title: 'Font Awesome',
+      url: 'https://fontawesome.com/',
     },
   ];
   return (
@@ -117,74 +119,74 @@ function CreditsDialog(props) {
             .
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Development Toolset
+            <Box pt={1} pb={2}>
+              Development Toolset
+            </Box>
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={2} mt={5}>
             {tools.map((tool) => (
-              <Grid item xs={3}>
-                <Paper className={classes.item}>
-                  <ButtonBase className={classes.image}>
-                    <a href={tool.url}>
+              <Grid item xs={4} key={tool.title}>
+                <Link href={tool.url} underline="none">
+                  <Paper className={classes.item}>
+                    <ButtonBase className={classes.image} disableRipple="true">
                       <img
                         className={classes.img}
                         alt={tool.title}
                         src={tool.source}
                         title={tool.title}
-                        key={tool.title}
+                        target="_blank"
+                        rel="noopener"
                       />
-                    </a>
-                  </ButtonBase>
-                </Paper>
+                    </ButtonBase>
+                    <Box pt={2}>
+                      <Typography className={classes.title} variant="subtitle2">
+                        {tool.title}
+                      </Typography>
+                    </Box>
+                  </Paper>
+                </Link>
               </Grid>
             ))}
           </Grid>
           <Typography variant="h6" gutterBottom>
-            Credits / Attributions
+            <Box pt={3}>Credits / Attributions</Box>
           </Typography>
           <Typography gutterBottom>
-            <ul>
-              <li>
-                Logo: created by{' '}
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://www.flaticon.com/authors/freepik"
-                >
-                  Freepik
-                </Link>{' '}
-                from{' '}
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://www.flaticon.com/"
-                >
-                  flaticon.com
-                </Link>
-                .
-              </li>
-              <li>
-                Data API: provided by{' '}
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://twitter.com/ksredelinghuys"
-                >
-                  Kyle Redelinghuys
-                </Link>{' '}
-                at{' '}
-                <Link
-                  target="_blank"
-                  rel="noopener"
-                  href="https://covid19api.com/"
-                >
-                  covid19api.com
-                </Link>
-                .
-              </li>
-            </ul>
+            Logo: created by{' '}
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://www.flaticon.com/authors/freepik"
+            >
+              Freepik
+            </Link>{' '}
+            from{' '}
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://www.flaticon.com/"
+            >
+              flaticon.com
+            </Link>
+            .
+          </Typography>
+          <Typography gutterBottom>
+            Data API: provided by{' '}
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://twitter.com/ksredelinghuys"
+            >
+              Kyle Redelinghuys
+            </Link>{' '}
+            at{' '}
+            <Link target="_blank" rel="noopener" href="https://covid19api.com/">
+              covid19api.com
+            </Link>
+            .
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Code Repository
+            <Box pt={2}>Code Repository</Box>
           </Typography>
           <Typography gutterBottom>
             Check out the code for this app on{' '}
