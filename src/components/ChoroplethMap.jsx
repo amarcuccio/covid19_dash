@@ -11,18 +11,20 @@ import {
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import ReactTooltip from 'react-tooltip';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/ChoroplethMapStyles';
 
 const geoUrl = require('../json/world.json');
 const projectionConfig = {
   scale: 140,
 };
-const defaultColor = '#757575';
+const defaultColor = '#1b5e20';
 const geographyStyle = {
   default: {
     outline: 'none',
   },
   hover: {
-    fill: '#212121',
+    fill: '#b71c1c',
     transition: 'all 750ms',
     outline: 'none',
     cursor: 'pointer',
@@ -31,7 +33,7 @@ const geographyStyle = {
     outline: 'none',
   },
 };
-export default class ChoroplethMap extends Component {
+class ChoroplethMap extends Component {
   state = {
     tooltipContent: '',
   };
@@ -53,21 +55,25 @@ export default class ChoroplethMap extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+    const { tooltipContent } = this.state;
     return (
       <div>
         <Container>
           <Typography variant="h6">Interactive Map</Typography>
         </Container>
         <Container>
-          <ReactTooltip>{this.state.tooltipContent}</ReactTooltip>
+          <ReactTooltip className={classes.statsTooltip}>
+            {tooltipContent}
+          </ReactTooltip>
           <ComposableMap
             projectionConfig={projectionConfig}
-            height={400}
+            height={450}
             data-tip=""
           >
-            <ZoomableGroup zoom={1}>
-              <Graticule stroke="#DDDDDD" strokeWidth={0.5} />
-              <Sphere stroke="#DDD" strokeWidth={0.5} />
+            <ZoomableGroup>
+              <Graticule stroke="#BDBDBD" strokeWidth={0.5} />
+              <Sphere stroke="#BDBDBD" strokeWidth={0.5} />
               <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                   geographies.map((geo) => {
@@ -91,3 +97,5 @@ export default class ChoroplethMap extends Component {
     );
   }
 }
+
+export default withStyles(styles)(ChoroplethMap);
