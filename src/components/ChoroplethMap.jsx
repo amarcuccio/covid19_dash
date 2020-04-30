@@ -10,6 +10,7 @@ import {
 } from 'react-simple-maps';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import ReactTooltip from 'react-tooltip';
 
 const geoUrl = require('../json/world.json');
 const projectionConfig = {
@@ -31,6 +32,26 @@ const geographyStyle = {
   },
 };
 export default class ChoroplethMap extends Component {
+  state = {
+    tooltipContent: '',
+  };
+
+  setTooltipContent = (geo) => {
+    this.setState({
+      tooltipContent: `${geo}`,
+    });
+  };
+
+  onMouseEnter = (geo) => {
+    return () => {
+      this.setTooltipContent(`${geo.properties.NAME}`);
+    };
+  };
+
+  onMouseLeave = () => {
+    this.setTooltipContent('');
+  };
+
   render() {
     return (
       <div>
@@ -38,7 +59,12 @@ export default class ChoroplethMap extends Component {
           <Typography variant="h6">Interactive Map</Typography>
         </Container>
         <Container>
-          <ComposableMap projectionConfig={projectionConfig} height={400}>
+          <ReactTooltip>{this.state.tooltipContent}</ReactTooltip>
+          <ComposableMap
+            projectionConfig={projectionConfig}
+            height={400}
+            data-tip=""
+          >
             <ZoomableGroup zoom={1}>
               <Graticule stroke="#DDDDDD" strokeWidth={0.5} />
               <Sphere stroke="#DDD" strokeWidth={0.5} />
@@ -51,6 +77,8 @@ export default class ChoroplethMap extends Component {
                         geography={geo}
                         fill={defaultColor}
                         style={geographyStyle}
+                        onMouseEnter={this.onMouseEnter(geo)}
+                        onMouseLeave={this.onMouseLeave}
                       />
                     );
                   })

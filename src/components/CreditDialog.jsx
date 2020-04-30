@@ -40,7 +40,7 @@ function CreditDialog(props) {
           </Typography>
           <Typography gutterBottom>
             The figures are fetched from a public API that collects them from a
-            credible source:{' '}
+            verified source:{' '}
             <Link
               target="_blank"
               rel="noopener"
@@ -55,6 +55,32 @@ function CreditDialog(props) {
           </Typography>
           <Typography gutterBottom>
             <ul>
+              <li>
+                <Link
+                  target="_blank"
+                  rel="noopener"
+                  href="https://nodejs.org/en/"
+                >
+                  Node.js
+                </Link>{' '}
+                (JavaScript runtime.)
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  rel="noopener"
+                  href="https://yarnpkg.com/"
+                >
+                  Yarn
+                </Link>{' '}
+                (Package and project manager.)
+              </li>
+              <li>
+                <Link target="_blank" rel="noopener" href="https://github.com/">
+                  GitHub
+                </Link>{' '}
+                (Development platform / source code repository.)
+              </li>
               <li>
                 <Link
                   target="_blank"
@@ -153,7 +179,7 @@ function CreditDialog(props) {
           <Typography gutterBottom>
             <ul>
               <li>
-                Logo: made by{' '}
+                Virus logo: made by{' '}
                 <Link
                   target="_blank"
                   rel="noopener"
@@ -167,7 +193,7 @@ function CreditDialog(props) {
                   rel="noopener"
                   href="https://www.flaticon.com/"
                 >
-                  www.flaticon.com
+                  flaticon.com
                 </Link>
                 .
               </li>
@@ -186,7 +212,7 @@ function CreditDialog(props) {
                   rel="noopener"
                   href="https://covid19api.com/"
                 >
-                  www.covid19api.com
+                  covid19api.com
                 </Link>
                 .
               </li>
