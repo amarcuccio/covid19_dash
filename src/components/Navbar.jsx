@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Container } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import CreditDialog from '../components/CreditDialog';
+import CreditsDialog from '../components/CreditsDialog';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
 import Typography from '@material-ui/core/Typography';
@@ -27,7 +27,7 @@ class Navbar extends Component {
     return (
       <div className={classes.root}>
         {dialogOpen && (
-          <CreditDialog open={dialogOpen} close={this.handleClose} />
+          <CreditsDialog open={dialogOpen} close={this.handleClose} />
         )}
         <AppBar position="static">
           <Container>

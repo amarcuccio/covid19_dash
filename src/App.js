@@ -3,7 +3,7 @@ import { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Navbar from './components/Navbar';
 import SummaryPane from './components/SummaryPane';
-import ChoroplethMap from './components/ChoroplethMap';
+import InteractiveMap from './components/InteractiveMap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faFileMedical,
@@ -28,7 +28,7 @@ export default class App extends Component {
         <CssBaseline />
         <Navbar />
         <SummaryPane />
-        <ChoroplethMap />
+        <InteractiveMap />
       </div>
     );
   }

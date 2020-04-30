@@ -12,7 +12,7 @@ import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import ReactTooltip from 'react-tooltip';
 import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/ChoroplethMapStyles';
+import styles from '../styles/InteractiveMapStyles';
 
 const geoUrl = require('../json/world.json');
 const projectionConfig = {
@@ -33,7 +33,7 @@ const geographyStyle = {
     outline: 'none',
   },
 };
-class ChoroplethMap extends Component {
+class InteractiveMap extends Component {
   state = {
     tooltipContent: '',
   };
@@ -98,4 +98,4 @@ class ChoroplethMap extends Component {
   }
 }
 
-export default withStyles(styles)(ChoroplethMap);
+export default withStyles(styles)(InteractiveMap);

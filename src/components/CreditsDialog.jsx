@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/CreditDialogStyles';
+import styles from '../styles/CreditsDialogStyles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -26,7 +26,7 @@ import {
   RsmLogo,
 } from '../images/logos';
 
-function CreditDialog(props) {
+function CreditsDialog(props) {
   const { classes, open, close } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
@@ -203,4 +203,4 @@ function CreditDialog(props) {
   );
 }
 
-export default withStyles(styles)(CreditDialog);
+export default withStyles(styles)(CreditsDialog);
