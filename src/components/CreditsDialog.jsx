@@ -14,7 +14,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Box from '@material-ui/core/Box';
-
 import {
   ReactLogo,
   NodejsLogo,
@@ -126,7 +125,12 @@ function CreditsDialog(props) {
           <Grid container spacing={2} mt={5}>
             {tools.map((tool) => (
               <Grid item xs={6} sm={4} key={tool.title}>
-                <Link href={tool.url} underline="none">
+                <Link
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener"
+                  underline="none"
+                >
                   <Paper className={classes.item}>
                     <ButtonBase className={classes.image} disableRipple={true}>
                       <img
@@ -134,8 +138,6 @@ function CreditsDialog(props) {
                         alt={tool.title}
                         src={tool.source}
                         title={tool.title}
-                        target="_blank"
-                        rel="noopener"
                       />
                     </ButtonBase>
                     <Typography className={classes.title} variant="subtitle2">

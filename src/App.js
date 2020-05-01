@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Navbar from './components/Navbar';
 import SummaryPane from './components/SummaryPane';
 import InteractiveMap from './components/InteractiveMap';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faFileMedical,
@@ -20,7 +20,6 @@ library.add(
   faArrowAltCircleUp,
   faArrowAltCircleDown
 );
-
 export default class App extends Component {
   render() {
     return (
