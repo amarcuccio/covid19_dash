@@ -10,7 +10,7 @@ const styles = (theme) => ({
     color: theme.palette.grey[500],
   },
   item: {
-    height: 150,
+    height: 125,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
@@ -22,9 +22,12 @@ const styles = (theme) => ({
     0px 1px 14px 0px rgba(0, 0, 0, 0.12)`,
     },
   },
+  title: {
+    paddingTop: '1em',
+  },
   image: {
-    width: 100,
-    height: 100,
+    width: 75,
+    height: 75,
   },
   img: {
     width: '100%',

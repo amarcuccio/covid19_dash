@@ -138,11 +138,9 @@ function CreditsDialog(props) {
                         rel="noopener"
                       />
                     </ButtonBase>
-                    <Box pt={2}>
-                      <Typography className={classes.title} variant="subtitle2">
-                        {tool.title}
-                      </Typography>
-                    </Box>
+                    <Typography className={classes.title} variant="subtitle2">
+                      {tool.title}
+                    </Typography>
                   </Paper>
                 </Link>
               </Grid>

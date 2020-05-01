@@ -30,7 +30,7 @@ class Navbar extends Component {
           <CreditsDialog open={dialogOpen} close={this.handleClose} />
         )}
         <AppBar position="static">
-          <Container>
+          <Container className={classes.container}>
             <Toolbar>
               <img src={VirusImage} alt="logo" className={classes.logo} />
               <Typography className={classes.title} variant="h6">

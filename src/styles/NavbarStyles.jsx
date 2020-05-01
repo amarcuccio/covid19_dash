@@ -2,6 +2,11 @@ const styles = (theme) => ({
   root: {
     flexGrow: 1,
   },
+  container: {
+    [theme.breakpoints.down('xs')]: {
+      paddingRight: '0px !important',
+    },
+  },
   title: {
     flexGrow: 1,
     [theme.breakpoints.down('xs')]: {
