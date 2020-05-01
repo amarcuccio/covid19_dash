@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import SummaryCard from './SummaryCard';
-import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/SummaryPaneStyles';
@@ -13,34 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from '@material-ui/core/Box';
 
 class SummaryPane extends Component {
-  state = {
-    summary: null,
-    updated: null,
-    loading: true,
-  };
-  componentDidMount() {
-    this.loadData();
-    setInterval(this.loadData, 900000);
-  }
-
-  loadData = async () => {
-    try {
-      const URL = 'https://api.covid19api.com/summary';
-      const response = await fetch(URL);
-      const data = await response.json();
-      this.setState({
-        summary: data.Global,
-        updated: moment(data.Date).format('MMMM Do YYYY [at] hh:mm:ss A'),
-        loading: false,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   render() {
-    const { loading, summary, updated } = this.state;
-    const { classes } = this.props;
+    const { classes, summary, loading, updated } = this.props;
 
     return (
       <Container className={classes.root}>
