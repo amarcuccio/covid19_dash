@@ -57,7 +57,7 @@ class InteractiveMap extends Component {
         </Container>
         <Container>
           {tooltipContent !== '' && (
-            <ReactTooltip>
+            <ReactTooltip place="bottom">
               <ReactCountryFlag
                 countryCode={tooltipFlag}
                 style={{
