@@ -10,14 +10,14 @@ import styles from '../styles/SummaryPaneStyles';
 import { Divider } from '@material-ui/core';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Box from '@material-ui/core/Box';
 
 class SummaryPane extends Component {
   state = {
-    loading: true,
     summary: null,
     updated: null,
+    loading: true,
   };
-
   componentDidMount() {
     this.loadData();
     setInterval(this.loadData, 900000);
@@ -93,7 +93,10 @@ class SummaryPane extends Component {
           <Typography variant="caption">
             {loading || !summary ? (
               <div>
-                <FontAwesomeIcon icon="sync" /> Refreshing data...
+                Refreshing data...{' '}
+                <Box component="span" mx={1}>
+                  <FontAwesomeIcon icon="sync" />
+                </Box>
               </div>
             ) : (
               `Last update: ${updated} EDT`
