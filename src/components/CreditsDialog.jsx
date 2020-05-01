@@ -125,10 +125,10 @@ function CreditsDialog(props) {
           </Typography>
           <Grid container spacing={2} mt={5}>
             {tools.map((tool) => (
-              <Grid item xs={4} key={tool.title}>
+              <Grid item xs={6} sm={4} key={tool.title}>
                 <Link href={tool.url} underline="none">
                   <Paper className={classes.item}>
-                    <ButtonBase className={classes.image} disableRipple="true">
+                    <ButtonBase className={classes.image} disableRipple={true}>
                       <img
                         className={classes.img}
                         alt={tool.title}

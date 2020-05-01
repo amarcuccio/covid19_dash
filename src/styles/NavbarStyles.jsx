@@ -6,6 +6,7 @@ const styles = (theme) => ({
     flexGrow: 1,
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
+      fontSize: '16px !important',
     },
   },
   logo: {
@@ -25,7 +26,7 @@ const styles = (theme) => ({
   },
   buttonIcon: {
     [theme.breakpoints.down('xs')]: {
-      fontSize: '30px !important',
+      fontSize: '28px !important',
       marginRight: '-30px',
       paddingRight: '0px',
     },
