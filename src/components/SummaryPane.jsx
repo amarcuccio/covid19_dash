@@ -39,24 +39,24 @@ class SummaryPane extends Component {
               <>
                 <SummaryCard
                   title={'Cases'}
-                  total={summary.TotalConfirmed}
+                  total={summary.Global.TotalConfirmed}
                   icon={'file-medical'}
                   color={'#2962FF'}
-                  additional={summary.NewConfirmed}
+                  additional={summary.Global.NewConfirmed}
                 />
                 <SummaryCard
                   title={'Recovered'}
-                  total={summary.TotalRecovered}
+                  total={summary.Global.TotalRecovered}
                   icon={'heart'}
                   color={'#00C853'}
-                  additional={summary.NewRecovered}
+                  additional={summary.Global.NewRecovered}
                 />
                 <SummaryCard
                   title={'Deaths'}
-                  total={summary.TotalDeaths}
+                  total={summary.Global.TotalDeaths}
                   icon={'skull-crossbones'}
                   color={'#D50000'}
-                  additional={summary.NewDeaths}
+                  additional={summary.Global.NewDeaths}
                 />
               </>
             )}

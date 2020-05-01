@@ -12,27 +12,16 @@ import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import ReactTooltip from 'react-tooltip';
 import ReactCountryFlag from 'react-country-flag';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/InteractiveMapStyles';
 
 const geoUrl = require('../json/world.json');
+const defaultColor = '#607D8B';
 const projectionConfig = {
   scale: 140,
 };
-const defaultColor = '#1b5e20';
-const geographyStyle = {
-  default: {
-    outline: 'none',
-  },
-  hover: {
-    fill: '#b71c1c',
-    transition: 'all 750ms',
-    outline: 'none',
-    cursor: 'pointer',
-  },
-  pressed: {
-    outline: 'none',
-  },
-};
-export default class InteractiveMap extends Component {
+
+class InteractiveMap extends Component {
   state = {
     tooltipContent: '',
   };
@@ -59,6 +48,7 @@ export default class InteractiveMap extends Component {
 
   render() {
     const { tooltipContent, tooltipFlag } = this.state;
+    const { classes } = this.props;
 
     return (
       <div>
@@ -97,7 +87,7 @@ export default class InteractiveMap extends Component {
                         key={geo.rsmKey}
                         geography={geo}
                         fill={defaultColor}
-                        style={geographyStyle}
+                        className={classes.geography}
                         onMouseEnter={this.onMouseEnter(geo)}
                         onMouseLeave={this.onMouseLeave}
                       />
@@ -108,7 +98,10 @@ export default class InteractiveMap extends Component {
             </ZoomableGroup>
           </ComposableMap>
         </Container>
+        <div className={classes.mapScale}></div>
       </div>
     );
   }
 }
+
+export default withStyles(styles)(InteractiveMap);

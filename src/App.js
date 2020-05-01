@@ -39,7 +39,7 @@ export default class App extends Component {
       const response = await fetch(URL);
       const data = await response.json();
       this.setState({
-        summary: data.Global,
+        summary: data,
         updated: moment(data.Date).format('MMMM Do YYYY [at] hh:mm:ss A'),
         loading: false,
       });
@@ -49,12 +49,13 @@ export default class App extends Component {
   };
   render() {
     const { summary, loading, updated } = this.state;
+
     return (
       <div>
         <CssBaseline />
         <Navbar />
         <SummaryPane summary={summary} loading={loading} updated={updated} />
-        <InteractiveMap summary={summary} loading={loading} />
+        {summary && <InteractiveMap summary={summary} loading={loading} />}
       </div>
     );
   }
