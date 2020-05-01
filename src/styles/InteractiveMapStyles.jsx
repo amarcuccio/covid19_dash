@@ -1,6 +1,7 @@
 const styles = (theme) => ({
-  statsTooltip: {
-    opacity: '1 !important',
+  tooltip: {
+    opacity: '1',
+    display: 'flex',
   },
 });
 

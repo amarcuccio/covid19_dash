@@ -11,6 +11,7 @@ import {
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import ReactTooltip from 'react-tooltip';
+import ReactCountryFlag from 'react-country-flag';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/InteractiveMapStyles';
 
@@ -38,34 +39,51 @@ class InteractiveMap extends Component {
     tooltipContent: '',
   };
 
-  setTooltipContent = (geo) => {
+  setTooltipContent = (geo, flag) => {
     this.setState({
       tooltipContent: `${geo}`,
+      tooltipFlag: `${flag}`,
     });
   };
 
   onMouseEnter = (geo) => {
     return () => {
-      this.setTooltipContent(`${geo.properties.NAME}`);
+      this.setTooltipContent(
+        `${geo.properties.NAME}`,
+        `${geo.properties.ISO_A2}`
+      );
     };
   };
 
   onMouseLeave = () => {
-    this.setTooltipContent('');
+    this.setTooltipContent('', '');
   };
 
   render() {
     const { classes } = this.props;
-    const { tooltipContent } = this.state;
+    const { tooltipContent, tooltipFlag } = this.state;
+
     return (
       <div>
         <Container>
           <Typography variant="h6">Interactive Map</Typography>
         </Container>
         <Container>
-          <ReactTooltip className={classes.statsTooltip}>
-            {tooltipContent}
-          </ReactTooltip>
+          {tooltipContent !== '' && (
+            <ReactTooltip className={classes.tooltip}>
+              <ReactCountryFlag
+                countryCode={tooltipFlag}
+                style={{
+                  display: 'flex !important',
+                  width: '2em',
+                  height: '2em',
+                  marginRight: '1em',
+                }}
+                svg
+              />
+              {tooltipContent}
+            </ReactTooltip>
+          )}
           <ComposableMap
             projectionConfig={projectionConfig}
             height={450}
