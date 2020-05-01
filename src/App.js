@@ -11,6 +11,7 @@ import {
   faSkullCrossbones,
   faArrowAltCircleUp,
   faArrowAltCircleDown,
+  faSync,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -18,7 +19,8 @@ library.add(
   faHeart,
   faSkullCrossbones,
   faArrowAltCircleUp,
-  faArrowAltCircleDown
+  faArrowAltCircleDown,
+  faSync
 );
 export default class App extends Component {
   render() {

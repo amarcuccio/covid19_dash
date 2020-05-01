@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/SummaryPaneStyles';
 import { Divider } from '@material-ui/core';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SummaryPane extends Component {
   state = {
@@ -90,9 +91,13 @@ class SummaryPane extends Component {
         </div>
         <div className={classes.updated}>
           <Typography variant="caption">
-            {loading || !summary
-              ? 'Refreshing data ... '
-              : `Last update: ${updated} EDT`}
+            {loading || !summary ? (
+              <div>
+                <FontAwesomeIcon icon="sync" /> Refreshing data...
+              </div>
+            ) : (
+              `Last update: ${updated} EDT`
+            )}
           </Typography>
           {loading || !summary ? <LinearProgress /> : <Divider />}
         </div>

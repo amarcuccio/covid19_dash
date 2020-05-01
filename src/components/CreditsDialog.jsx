@@ -108,6 +108,7 @@ function CreditsDialog(props) {
             site are fetched from a public API that collects and compiles them
             from a verified, reputable source:{' '}
             <Link
+              color="secondary"
               target="_blank"
               rel="noopener"
               href="https://systems.jhu.edu/research/public-health/ncov/"
@@ -154,6 +155,7 @@ function CreditsDialog(props) {
           <Typography gutterBottom>
             Logo: created by{' '}
             <Link
+              color="secondary"
               target="_blank"
               rel="noopener"
               href="https://www.flaticon.com/authors/freepik"
@@ -162,6 +164,7 @@ function CreditsDialog(props) {
             </Link>{' '}
             from{' '}
             <Link
+              color="secondary"
               target="_blank"
               rel="noopener"
               href="https://www.flaticon.com/"
@@ -173,6 +176,7 @@ function CreditsDialog(props) {
           <Typography gutterBottom>
             Data API: provided by{' '}
             <Link
+              color="secondary"
               target="_blank"
               rel="noopener"
               href="https://twitter.com/ksredelinghuys"
@@ -180,7 +184,12 @@ function CreditsDialog(props) {
               Kyle Redelinghuys
             </Link>{' '}
             at{' '}
-            <Link target="_blank" rel="noopener" href="https://covid19api.com/">
+            <Link
+              color="secondary"
+              target="_blank"
+              rel="noopener"
+              href="https://covid19api.com/"
+            >
               covid19api.com
             </Link>
             .
@@ -191,6 +200,7 @@ function CreditsDialog(props) {
           <Typography gutterBottom>
             Check out the code for this app on{' '}
             <Link
+              color="secondary"
               target="_blank"
               rel="noopener"
               href="https://github.com/amarcuccio/covid19_dash"
