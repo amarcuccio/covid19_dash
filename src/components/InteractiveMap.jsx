@@ -12,8 +12,6 @@ import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import ReactTooltip from 'react-tooltip';
 import ReactCountryFlag from 'react-country-flag';
-import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/InteractiveMapStyles';
 
 const geoUrl = require('../json/world.json');
 const projectionConfig = {
@@ -34,7 +32,7 @@ const geographyStyle = {
     outline: 'none',
   },
 };
-class InteractiveMap extends Component {
+export default class InteractiveMap extends Component {
   state = {
     tooltipContent: '',
   };
@@ -60,7 +58,6 @@ class InteractiveMap extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { tooltipContent, tooltipFlag } = this.state;
 
     return (
@@ -70,7 +67,7 @@ class InteractiveMap extends Component {
         </Container>
         <Container>
           {tooltipContent !== '' && (
-            <ReactTooltip className={classes.tooltip}>
+            <ReactTooltip>
               <ReactCountryFlag
                 countryCode={tooltipFlag}
                 style={{
@@ -115,5 +112,3 @@ class InteractiveMap extends Component {
     );
   }
 }
-
-export default withStyles(styles)(InteractiveMap);
