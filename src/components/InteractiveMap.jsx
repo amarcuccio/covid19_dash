@@ -8,36 +8,35 @@ import {
   Sphere,
   ZoomableGroup,
 } from 'react-simple-maps';
+import LinearGradient from '../components/LinearGradient';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import ReactTooltip from 'react-tooltip';
 import ReactCountryFlag from 'react-country-flag';
-import LinearGradient from '../components/LinearGradient';
-import { scaleQuantile } from 'd3-scale';
 import { Divider } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/InteractiveMapStyles';
+import { scaleQuantile } from 'd3-scale';
+import { schemeYlOrRd } from 'd3-scale-chromatic';
+import { select } from 'd3-selection';
+import { format } from 'd3-format';
+
+const d3 = Object.assign(
+  {},
+  {
+    format,
+    scaleQuantile,
+    schemeYlOrRd,
+    select,
+  }
+);
 
 const geoUrl = require('../json/world.json');
-const defaultColor = '#E49DA0';
+const defaultColor = '#000000';
 const projectionConfig = {
   scale: 140,
 };
-const colorRange = [
-  '#EDB7BA',
-  '#E8AAAD',
-  '#E49DA0',
-  '#E09092',
-  '#DB8385',
-  '#D77678',
-  '#D26A6B',
-  '#CE5D5E',
-  '#C95051',
-  '#C44344',
-  '#C03636',
-  '#BB2929',
-  '#B71C1C',
-];
 
 const geographyStyle = {
   default: {
@@ -61,8 +60,6 @@ function InteractiveMap(props) {
   const { classes } = props;
 
   const gradientData = {
-    fromColor: colorRange[0],
-    toColor: colorRange[colorRange.length - 1],
     min: 0,
     max: data.reduce(
       (max, item) => (item.TotalConfirmed > max ? item.TotalConfirmed : max),
@@ -82,15 +79,35 @@ function InteractiveMap(props) {
     setTooltipFlag('');
   };
 
-  const colorScale = scaleQuantile()
-    .domain(data.map((d) => d.TotalConfirmed))
-    .range(colorRange);
+  var colorScale = d3
+    .scaleQuantile()
+    .domain([
+      0,
+      250,
+      500,
+      1000,
+      1500,
+      25000,
+      5000,
+      10000,
+      25000,
+      50000,
+      100000,
+      250000,
+      500000,
+      750000,
+      1000000,
+      1250000,
+      1500000,
+    ])
+    .range(d3.schemeYlOrRd[9]);
 
   return (
     <div>
       <Container>
         <Typography variant="h6">Interactive Map</Typography>
       </Container>
+
       <Container>
         {tooltipContent !== '' && (
           <ReactTooltip place="bottom">
@@ -113,8 +130,8 @@ function InteractiveMap(props) {
           data-tip=""
         >
           <ZoomableGroup>
-            <Graticule stroke="#BDBDBD" strokeWidth={0.5} />
-            <Sphere stroke="#BDBDBD" strokeWidth={0.5} />
+            <Sphere stroke="#212121" strokeWidth={0.25} fill="#81d4fa" />
+            <Graticule stroke="#424242" strokeWidth={0.25} />
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
@@ -140,11 +157,21 @@ function InteractiveMap(props) {
             </Geographies>
           </ZoomableGroup>
         </ComposableMap>
+
         <LinearGradient data={gradientData} />
+
         <div className={classes.updated}>
           <Typography variant="caption">
-            This map uses the quantile scale method of separating the
-            population.
+            This choropleth map uses the{' '}
+            <Link
+              color="secondary"
+              target="_blank"
+              rel="noopener"
+              href="https://observablehq.com/@d3/quantile-quantize-and-threshold-scales"
+            >
+              quantile scale
+            </Link>{' '}
+            method to separate the population.
           </Typography>
           <Divider />
         </div>
