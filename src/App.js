@@ -7,8 +7,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import moment from 'moment';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faFileMedical,
-  faHeart,
+  faLungsVirus,
+  faHeadSideMask,
   faSkullCrossbones,
   faArrowAltCircleUp,
   faArrowAltCircleDown,
@@ -16,8 +16,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
-  faFileMedical,
-  faHeart,
+  faLungsVirus,
+  faHeadSideMask,
   faSkullCrossbones,
   faArrowAltCircleUp,
   faArrowAltCircleDown,

@@ -40,14 +40,14 @@ class SummaryPane extends Component {
                 <SummaryCard
                   title={'Cases'}
                   total={summary.Global.TotalConfirmed}
-                  icon={'file-medical'}
-                  color={'#2962FF'}
+                  icon={'lungs-virus'}
+                  color={'#FF5722'}
                   additional={summary.Global.NewConfirmed}
                 />
                 <SummaryCard
                   title={'Recovered'}
                   total={summary.Global.TotalRecovered}
-                  icon={'heart'}
+                  icon={'head-side-mask'}
                   color={'#00C853'}
                   additional={summary.Global.NewRecovered}
                 />

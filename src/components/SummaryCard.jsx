@@ -44,7 +44,7 @@ class SummaryCard extends Component {
             ) : (
               <div className={classes.details}>
                 <div className={classes.icon}>
-                  <FontAwesomeIcon icon={icon} size="3x" color={color} />
+                  <FontAwesomeIcon icon={icon} size="4x" color={color} />
                 </div>
                 <div className={classes.content}>
                   <Typography variant="subtitle1">{title}</Typography>

@@ -9,7 +9,7 @@ const styles = (theme) => ({
     justifyContent: 'center',
     display: 'flex',
     flexDirection: 'row',
-    width: '30%',
+    width: '40%',
     [theme.breakpoints.down('xs')]: {
       width: '100%',
     },
@@ -19,7 +19,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '70%',
+    width: '60%',
     [theme.breakpoints.down('xs')]: {
       marginTop: '1em',
       width: '100%',
