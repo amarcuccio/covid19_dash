@@ -4,7 +4,6 @@ const styles = (theme) => ({
     flexDirection: 'column',
     width: '50%',
     margin: '0 auto',
-    height: 20,
   },
   image: {
     display: 'flex',

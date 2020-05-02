@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import CountUp from 'react-countup';
-import ScaleImage from '../images/map/YlOrRd.png';
+import ScaleImage from '../images/map/Oranges.png';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/LinearGradientStyles';
 

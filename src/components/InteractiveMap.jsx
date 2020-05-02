@@ -18,7 +18,7 @@ import { Divider } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/InteractiveMapStyles';
 import { scaleQuantile } from 'd3-scale';
-import { schemeYlOrRd } from 'd3-scale-chromatic';
+import { schemeOranges } from 'd3-scale-chromatic';
 import { select } from 'd3-selection';
 import { format } from 'd3-format';
 
@@ -27,13 +27,13 @@ const d3 = Object.assign(
   {
     format,
     scaleQuantile,
-    schemeYlOrRd,
+    schemeOranges,
     select,
   }
 );
 
 const geoUrl = require('../json/world.json');
-const defaultColor = '#000000';
+const defaultColor = '#FFFFFF';
 const projectionConfig = {
   scale: 140,
 };
@@ -100,7 +100,7 @@ function InteractiveMap(props) {
       1250000,
       1500000,
     ])
-    .range(d3.schemeYlOrRd[9]);
+    .range(d3.schemeOranges[9]);
 
   return (
     <div>

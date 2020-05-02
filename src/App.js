@@ -8,7 +8,7 @@ import moment from 'moment';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faLungsVirus,
-  faHeadSideMask,
+  faSmile,
   faSkullCrossbones,
   faArrowAltCircleUp,
   faArrowAltCircleDown,
@@ -17,7 +17,7 @@ import {
 
 library.add(
   faLungsVirus,
-  faHeadSideMask,
+  faSmile,
   faSkullCrossbones,
   faArrowAltCircleUp,
   faArrowAltCircleDown,
