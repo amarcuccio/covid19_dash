@@ -35,7 +35,7 @@ const d3 = Object.assign(
 const geoUrl = require('../json/world.json');
 const defaultColor = '#FFFFFF';
 const projectionConfig = {
-  scale: 140,
+  scale: 145,
 };
 
 const geographyStyle = {

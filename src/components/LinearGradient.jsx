@@ -1,40 +1,39 @@
 import React from 'react';
+import { Component } from 'react';
 import { Container } from '@material-ui/core';
 import CountUp from 'react-countup';
-import ScaleImage from '../images/map/Oranges.png';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/LinearGradientStyles';
 
-const LinearGradient = (props) => {
-  const { data, classes } = props;
-
-  return (
-    <Container>
-      <div className={classes.root}>
-        <div className={classes.image}>
-          <img src={ScaleImage} alt="Scale"></img>
-        </div>
-        <div className={classes.text}>
-          <div className={classes.start}>
-            <CountUp
-              start={data.min}
-              end={data.min}
-              duration={0}
-              separator=", "
-            />
+class LinearGradient extends Component {
+  render() {
+    const { data, classes } = this.props;
+    return (
+      <Container>
+        <div className={classes.root}>
+          <div className={classes.gradient}></div>
+          <div className={classes.text}>
+            <span>
+              <CountUp
+                start={data.min}
+                end={data.min}
+                duration={0}
+                separator=","
+              />
+            </span>
+            <span>
+              <CountUp
+                start={data.max}
+                end={data.max}
+                duration={0}
+                separator=","
+              />
+            </span>
           </div>
-          <div className={classes.end}>
-            <CountUp
-              start={data.max}
-              end={data.max}
-              duration={0}
-              separator=", "
-            />
-          </div>
         </div>
-      </div>
-    </Container>
-  );
-};
+      </Container>
+    );
+  }
+}
 
 export default withStyles(styles)(LinearGradient);

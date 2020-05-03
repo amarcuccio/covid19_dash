@@ -1,24 +1,24 @@
 const styles = (theme) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
     width: '50%',
-    margin: '0 auto',
+    margin: 'auto',
   },
-  image: {
-    display: 'flex',
-    width: '100%',
-    margin: '0 auto',
-    '& img': {
-      height: 20,
-      maxWidth: '100%',
+  gradient: {
+    backgroundImage:
+      'linear-gradient(to right, #fff5eb, #fee6ce, #fdd0a2, #fdae6b, #fd8d3c, #f16913, #d94801, #a63603, #7f2704 )',
+    height: '20px',
+    [theme.breakpoints.down('xs')]: {
+      height: '12px',
     },
   },
   text: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100%',
-    margin: '0 auto',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.750rem',
+    },
+    fontWeight: 'bold',
+    paddingTop: '0.25rem',
   },
 });
 
