@@ -10,6 +10,9 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     width: '40%',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
   content: {
     display: 'flex',
@@ -17,6 +20,10 @@ const styles = (theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: '60%',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '1em',
+      width: '100%',
+    },
   },
   countIcon: {
     marginRight: '0.5em',
