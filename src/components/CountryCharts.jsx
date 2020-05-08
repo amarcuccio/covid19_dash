@@ -3,7 +3,6 @@ import moment from 'moment';
 import { Line } from 'react-chartjs-2';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 
 class CountryCharts extends Component {
   state = {
@@ -129,13 +128,6 @@ class CountryCharts extends Component {
           'loading...'
         ) : (
           <div>
-            <Container>
-              <Typography variant="h6">Pandemic Timeline</Typography>
-              <Typography variant="subtitle">
-                Click/Tap a country in the globe above to view a day by day
-                timeline below!
-              </Typography>
-            </Container>
             <Container>
               <Grid container spacing={3}>
                 <Grid item xs={12}>

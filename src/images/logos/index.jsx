@@ -8,3 +8,4 @@ export const D3Logo = require('./d3.svg');
 export const FaLogo = require('./fa.svg');
 export const MomentjsLogo = require('./momentjs.svg');
 export const RsmLogo = require('./rsm.svg');
+export const ChartjsLogo = require('./chartjs.svg');

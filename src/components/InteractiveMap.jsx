@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import CountryCharts from '../components/CountryCharts';
 import {
   ComposableMap,
   Geographies,
@@ -36,7 +37,7 @@ const d3 = Object.assign(
 const geoUrl = require('../json/world.json');
 const defaultColor = '#FFFFFF';
 const projectionConfig = {
-  scale: 145,
+  scale: 125,
 };
 
 const geographyStyle = {
@@ -58,7 +59,7 @@ function InteractiveMap(props) {
   const [tooltipContent, setTooltipContent] = useState('');
   const [tooltipFlag, setTooltipFlag] = useState('');
   const data = props.summary.Countries;
-  const { classes } = props;
+  const { classes, loading } = props;
 
   const gradientData = {
     min: 0,
@@ -106,81 +107,85 @@ function InteractiveMap(props) {
   return (
     <div>
       <Container>
-        <Typography variant="h6">Interactive Map</Typography>
+        <Typography variant="h6">Interactive Map and Timeline</Typography>
       </Container>
+      {loading ? (
+        'loading...'
+      ) : (
+        <Container>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              {tooltipContent !== '' && (
+                <ReactTooltip place="bottom">
+                  <ReactCountryFlag
+                    countryCode={tooltipFlag}
+                    style={{
+                      display: 'flex !important',
+                      width: '2em',
+                      height: '2em',
+                      marginRight: '1em',
+                    }}
+                    svg
+                  />
+                  {tooltipContent}
+                </ReactTooltip>
+              )}
+              <ComposableMap
+                projectionConfig={projectionConfig}
+                height={350}
+                data-tip=""
+              >
+                <ZoomableGroup>
+                  <Sphere stroke="#212121" strokeWidth={0.25} fill="#AEE0F5" />
+                  <Graticule stroke="#212121" strokeWidth={0.25} />
+                  <Geographies geography={geoUrl}>
+                    {({ geographies }) =>
+                      geographies.map((geo) => {
+                        const current = data.find(
+                          (s) => s.CountryCode === geo.properties.ISO_A2
+                        );
+                        return (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            fill={
+                              current
+                                ? colorScale(current.TotalConfirmed)
+                                : defaultColor
+                            }
+                            style={geographyStyle}
+                            onMouseEnter={onMouseEnter(geo, current)}
+                            onMouseLeave={onMouseLeave}
+                          />
+                        );
+                      })
+                    }
+                  </Geographies>
+                </ZoomableGroup>
+              </ComposableMap>
 
-      <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            {tooltipContent !== '' && (
-              <ReactTooltip place="bottom">
-                <ReactCountryFlag
-                  countryCode={tooltipFlag}
-                  style={{
-                    display: 'flex !important',
-                    width: '2em',
-                    height: '2em',
-                    marginRight: '1em',
-                  }}
-                  svg
-                />
-                {tooltipContent}
-              </ReactTooltip>
-            )}
-            <ComposableMap
-              projectionConfig={projectionConfig}
-              height={450}
-              data-tip=""
-            >
-              <ZoomableGroup>
-                <Sphere stroke="#212121" strokeWidth={0.25} fill="#81d4fa" />
-                <Graticule stroke="#424242" strokeWidth={0.25} />
-                <Geographies geography={geoUrl}>
-                  {({ geographies }) =>
-                    geographies.map((geo) => {
-                      const current = data.find(
-                        (s) => s.CountryCode === geo.properties.ISO_A2
-                      );
-                      return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          fill={
-                            current
-                              ? colorScale(current.TotalConfirmed)
-                              : defaultColor
-                          }
-                          style={geographyStyle}
-                          onMouseEnter={onMouseEnter(geo, current)}
-                          onMouseLeave={onMouseLeave}
-                        />
-                      );
-                    })
-                  }
-                </Geographies>
-              </ZoomableGroup>
-            </ComposableMap>
-
-            <LinearGradient data={gradientData} />
+              <LinearGradient data={gradientData} />
+            </Grid>
           </Grid>
-        </Grid>
 
-        <div className={classes.updated}>
-          <Typography variant="caption">
-            This choropleth map uses the{' '}
-            <Link
-              color="secondary"
-              target="_blank"
-              rel="noopener"
-              href="https://observablehq.com/@d3/quantile-quantize-and-threshold-scales"
-            >
-              quantile scale
-            </Link>{' '}
-            method to separate the population.
-          </Typography>
-          <Divider />
-        </div>
-      </Container>
+          <div className={classes.updated}>
+            <Typography variant="caption">
+              This choropleth map uses the{' '}
+              <Link
+                color="secondary"
+                target="_blank"
+                rel="noopener"
+                href="https://observablehq.com/@d3/quantile-quantize-and-threshold-scales"
+              >
+                quantile scale
+              </Link>{' '}
+              method to separate the population.
+            </Typography>
+            <Divider />
+          </div>
+          <CountryCharts />
+        </Container>
+      )}
     </div>
   );
 }

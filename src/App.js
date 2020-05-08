@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import SummaryPane from './components/SummaryPane';
 import InteractiveMap from './components/InteractiveMap';
-import CountryCharts from './components/CountryCharts';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import moment from 'moment';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -10,6 +9,7 @@ import {
   faLungsVirus,
   faSmile,
   faSkullCrossbones,
+  faFileMedical,
   faArrowAltCircleUp,
   faArrowAltCircleDown,
   faSync,
@@ -19,6 +19,7 @@ library.add(
   faLungsVirus,
   faSmile,
   faSkullCrossbones,
+  faFileMedical,
   faArrowAltCircleUp,
   faArrowAltCircleDown,
   faSync
@@ -56,7 +57,6 @@ export default class App extends Component {
         <Navbar />
         <SummaryPane summary={summary} loading={loading} updated={updated} />
         {summary && <InteractiveMap summary={summary} loading={loading} />}
-        <CountryCharts />
       </div>
     );
   }

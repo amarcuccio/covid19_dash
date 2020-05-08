@@ -25,6 +25,7 @@ import {
   FaLogo,
   MomentjsLogo,
   RsmLogo,
+  ChartjsLogo,
 } from '../images/logos';
 
 function CreditsDialog(props) {
@@ -56,6 +57,11 @@ function CreditsDialog(props) {
       source: RsmLogo,
       title: 'React Simple Maps',
       url: 'https://www.react-simple-maps.io/',
+    },
+    {
+      source: ChartjsLogo,
+      title: 'Chart.js',
+      url: 'https://www.chartjs.org/',
     },
     {
       source: NodejsLogo,
