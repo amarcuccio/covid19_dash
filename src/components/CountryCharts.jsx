@@ -1,34 +1,13 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { Line } from 'react-chartjs-2';
 
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'My First dataset',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
-    },
-  ],
-};
-
 class CountryCharts extends Component {
+  state = {
+    loading: true,
+    data: {},
+  };
+
   componentDidMount() {
     this.getChartData();
   }
@@ -37,15 +16,111 @@ class CountryCharts extends Component {
     try {
       const URL = 'https://api.covid19api.com/total/dayone/country/canada';
       const response = await fetch(URL);
-      const data = await response.json();
-      console.log(data);
+      var stats = await response.json();
+      const linedata = {
+        labels: stats.map((item) =>
+          moment(new Date(item.Date)).format('MMM D YYYY')
+        ),
+        datasets: [
+          {
+            label: 'Confirmed',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: '#2962FF',
+            borderColor: '#2962FF',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: '#2962FF',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: '#2962FF',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: stats.map((item) => item.Confirmed),
+          },
+          {
+            label: 'Active',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: '#FF6D00',
+            borderColor: '#FF6D00',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: '#FF6D00',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: '#FF6D00',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: stats.map((item) => item.Active),
+          },
+          {
+            label: 'Recovered',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: '#00C853',
+            borderColor: '#00C853',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: '#00C853',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: '#00C853',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: stats.map((item) => item.Recovered),
+          },
+          {
+            label: 'Deaths',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: '#D50000',
+            borderColor: '#D50000',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: '#D50000',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: '#D50000',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: stats.map((item) => item.Deaths),
+          },
+        ],
+      };
+
+      this.setState({
+        loading: false,
+        data: linedata,
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
   render() {
-    return <Line data={data} />;
+    const { loading, data } = this.state;
+    return <div>{loading ? 'loading...' : <Line data={data} />}</div>;
   }
 }
 
