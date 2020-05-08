@@ -8,6 +8,7 @@ import {
   Sphere,
   ZoomableGroup,
 } from 'react-simple-maps';
+import Grid from '@material-ui/core/Grid';
 import LinearGradient from '../components/LinearGradient';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
@@ -109,56 +110,60 @@ function InteractiveMap(props) {
       </Container>
 
       <Container>
-        {tooltipContent !== '' && (
-          <ReactTooltip place="bottom">
-            <ReactCountryFlag
-              countryCode={tooltipFlag}
-              style={{
-                display: 'flex !important',
-                width: '2em',
-                height: '2em',
-                marginRight: '1em',
-              }}
-              svg
-            />
-            {tooltipContent}
-          </ReactTooltip>
-        )}
-        <ComposableMap
-          projectionConfig={projectionConfig}
-          height={450}
-          data-tip=""
-        >
-          <ZoomableGroup>
-            <Sphere stroke="#212121" strokeWidth={0.25} fill="#81d4fa" />
-            <Graticule stroke="#424242" strokeWidth={0.25} />
-            <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => {
-                  const current = data.find(
-                    (s) => s.CountryCode === geo.properties.ISO_A2
-                  );
-                  return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill={
-                        current
-                          ? colorScale(current.TotalConfirmed)
-                          : defaultColor
-                      }
-                      style={geographyStyle}
-                      onMouseEnter={onMouseEnter(geo, current)}
-                      onMouseLeave={onMouseLeave}
-                    />
-                  );
-                })
-              }
-            </Geographies>
-          </ZoomableGroup>
-        </ComposableMap>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            {tooltipContent !== '' && (
+              <ReactTooltip place="bottom">
+                <ReactCountryFlag
+                  countryCode={tooltipFlag}
+                  style={{
+                    display: 'flex !important',
+                    width: '2em',
+                    height: '2em',
+                    marginRight: '1em',
+                  }}
+                  svg
+                />
+                {tooltipContent}
+              </ReactTooltip>
+            )}
+            <ComposableMap
+              projectionConfig={projectionConfig}
+              height={450}
+              data-tip=""
+            >
+              <ZoomableGroup>
+                <Sphere stroke="#212121" strokeWidth={0.25} fill="#81d4fa" />
+                <Graticule stroke="#424242" strokeWidth={0.25} />
+                <Geographies geography={geoUrl}>
+                  {({ geographies }) =>
+                    geographies.map((geo) => {
+                      const current = data.find(
+                        (s) => s.CountryCode === geo.properties.ISO_A2
+                      );
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          fill={
+                            current
+                              ? colorScale(current.TotalConfirmed)
+                              : defaultColor
+                          }
+                          style={geographyStyle}
+                          onMouseEnter={onMouseEnter(geo, current)}
+                          onMouseLeave={onMouseLeave}
+                        />
+                      );
+                    })
+                  }
+                </Geographies>
+              </ZoomableGroup>
+            </ComposableMap>
 
-        <LinearGradient data={gradientData} />
+            <LinearGradient data={gradientData} />
+          </Grid>
+        </Grid>
 
         <div className={classes.updated}>
           <Typography variant="caption">
