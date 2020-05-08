@@ -18,7 +18,7 @@ class SummaryPane extends Component {
     return (
       <Container className={classes.root}>
         <div className={classes.title}>
-          <Typography variant="h6">World Case Summary</Typography>
+          <Typography variant="h6">Global Case Summary</Typography>
         </div>
         <div>
           <Grid
@@ -34,15 +34,31 @@ class SummaryPane extends Component {
                 <SummaryCard loading={loading} />
                 <SummaryCard loading={loading} />
                 <SummaryCard loading={loading} />
+                <SummaryCard loading={loading} />
               </>
             ) : (
               <>
                 <SummaryCard
-                  title={'Cases'}
+                  title={'Confirmed'}
                   total={summary.Global.TotalConfirmed}
                   icon={'lungs-virus'}
-                  color={'#FF5722'}
+                  color={'#2962FF'}
                   additional={summary.Global.NewConfirmed}
+                />
+                <SummaryCard
+                  title={'Active'}
+                  total={
+                    summary.Global.TotalConfirmed -
+                    summary.Global.TotalRecovered -
+                    summary.Global.TotalDeaths
+                  }
+                  icon={'lungs-virus'}
+                  color={'#FF6D00'}
+                  additional={
+                    summary.Global.NewConfirmed -
+                    summary.Global.NewRecovered -
+                    summary.Global.NewDeaths
+                  }
                 />
                 <SummaryCard
                   title={'Recovered'}
