@@ -14,9 +14,15 @@ class CountryCharts extends Component {
     this.getChartData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.country !== this.props.country) {
+      this.getChartData(this.props.country);
+    }
+  }
+
   getChartData = async () => {
     try {
-      const URL = 'https://api.covid19api.com/total/dayone/country/canada';
+      const URL = `https://api.covid19api.com/total/dayone/country/${this.props.country}`;
       const response = await fetch(URL);
       var stats = await response.json();
       const linedata = {

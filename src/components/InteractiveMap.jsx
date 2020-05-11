@@ -58,6 +58,7 @@ const geographyStyle = {
 function InteractiveMap(props) {
   const [tooltipContent, setTooltipContent] = useState('');
   const [tooltipFlag, setTooltipFlag] = useState('');
+  const [chartCountry, setChartCountry] = useState('');
   const data = props.summary.Countries;
   const { classes, loading } = props;
 
@@ -79,6 +80,10 @@ function InteractiveMap(props) {
   const onMouseLeave = () => {
     setTooltipContent('');
     setTooltipFlag('');
+  };
+
+  const handleClick = (geo) => {
+    setChartCountry(`${geo.properties.NAME_LONG}`.toLowerCase());
   };
 
   var colorScale = d3
@@ -154,8 +159,11 @@ function InteractiveMap(props) {
                                 : defaultColor
                             }
                             style={geographyStyle}
-                            onMouseEnter={onMouseEnter(geo, current)}
+                            onMouseEnter={onMouseEnter(geo)}
                             onMouseLeave={onMouseLeave}
+                            onClick={() => {
+                              handleClick(geo);
+                            }}
                           />
                         );
                       })
@@ -183,7 +191,7 @@ function InteractiveMap(props) {
             </Typography>
             <Divider />
           </div>
-          <CountryCharts />
+          {chartCountry && <CountryCharts country={chartCountry} />}
         </Container>
       )}
     </div>
