@@ -83,7 +83,8 @@ function InteractiveMap(props) {
   };
 
   const handleClick = (geo) => {
-    setChartCountry(`${geo.properties.NAME_LONG}`.toLowerCase());
+    const slug = data.find((s) => s.CountryCode === geo.properties.ISO_A2);
+    setChartCountry(`${slug.Slug}`.toLowerCase());
   };
 
   var colorScale = d3
