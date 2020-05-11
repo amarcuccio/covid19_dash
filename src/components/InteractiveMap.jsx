@@ -107,6 +107,8 @@ function InteractiveMap(props) {
       1000000,
       1250000,
       1500000,
+      2000000,
+      2500000,
     ])
     .range(d3.schemeOranges[9]);
 
@@ -142,7 +144,7 @@ function InteractiveMap(props) {
                 data-tip=""
               >
                 <ZoomableGroup>
-                  <Sphere stroke="#212121" strokeWidth={0.25} fill="#AEE0F5" />
+                  <Sphere stroke="#212121" strokeWidth={0.25} fill="#AADAFF" />
                   <Graticule stroke="#212121" strokeWidth={0.25} />
                   <Geographies geography={geoUrl}>
                     {({ geographies }) =>
