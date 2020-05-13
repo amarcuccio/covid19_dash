@@ -58,7 +58,9 @@ const geographyStyle = {
 function InteractiveMap(props) {
   const [tooltipContent, setTooltipContent] = useState('');
   const [tooltipFlag, setTooltipFlag] = useState('');
-  const [chartCountry, setChartCountry] = useState('');
+  const [chartCountry, setChartCountry] = useState('canada');
+  const [chartFlag, setChartFlag] = useState('ca');
+  const [chartName, setChartName] = useState('Canada');
   const data = props.summary.Countries;
   const { classes, loading } = props;
 
@@ -85,6 +87,8 @@ function InteractiveMap(props) {
   const handleClick = (geo) => {
     const slug = data.find((s) => s.CountryCode === geo.properties.ISO_A2);
     setChartCountry(`${slug.Slug}`.toLowerCase());
+    setChartFlag(`${geo.properties.ISO_A2}`);
+    setChartName(`${geo.properties.NAME}`);
   };
 
   var colorScale = d3
@@ -194,7 +198,13 @@ function InteractiveMap(props) {
             </Typography>
             <Divider />
           </div>
-          {chartCountry && <CountryCharts country={chartCountry} />}
+          {chartCountry && (
+            <CountryCharts
+              country={chartCountry}
+              flag={chartFlag}
+              name={chartName}
+            />
+          )}
         </Container>
       )}
     </div>

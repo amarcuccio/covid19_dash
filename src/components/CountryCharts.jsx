@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { Line } from 'react-chartjs-2';
 import Grid from '@material-ui/core/Grid';
+import ReactCountryFlag from 'react-country-flag';
 import { Container } from '@material-ui/core';
 
 class CountryCharts extends Component {
@@ -128,6 +129,33 @@ class CountryCharts extends Component {
 
   render() {
     const { loading, data } = this.state;
+    const options = {
+      title: {
+        display: true,
+        text: `${this.props.name.toUpperCase()} Case by Case`,
+      },
+      legend: {
+        position: 'bottom',
+      },
+      scales: {
+        yAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: 'Count',
+            },
+          },
+        ],
+        xAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: 'Date',
+            },
+          },
+        ],
+      },
+    };
     return (
       <div>
         {loading ? (
@@ -135,9 +163,24 @@ class CountryCharts extends Component {
         ) : (
           <div>
             <Container>
+              <Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <ReactCountryFlag
+                      countryCode={this.props.flag}
+                      style={{
+                        width: '5em',
+                        height: '5em',
+                      }}
+                      svg
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
               <Grid container spacing={3}>
                 <Grid item xs={12}>
-                  <Line data={data} />
+                  <Line data={data} options={options} />
                 </Grid>
               </Grid>
             </Container>
