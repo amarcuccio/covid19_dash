@@ -23,6 +23,8 @@ import { scaleQuantile } from 'd3-scale';
 import { schemeOranges } from 'd3-scale-chromatic';
 import { select } from 'd3-selection';
 import { format } from 'd3-format';
+import Skeleton from '@material-ui/lab/Skeleton';
+import { defaultConfig } from '../config';
 
 const d3 = Object.assign(
   {},
@@ -34,26 +36,10 @@ const d3 = Object.assign(
   }
 );
 
-const geoUrl = require('../json/world.json');
-const defaultColor = '#FFFFFF';
-const projectionConfig = {
-  scale: 125,
-};
-
-const geographyStyle = {
-  default: {
-    outline: 'none',
-  },
-  hover: {
-    fill: '#263238',
-    transition: 'all 750ms',
-    outline: 'none',
-    cursor: 'pointer',
-  },
-  pressed: {
-    outline: 'none',
-  },
-};
+const geoUrl = require('../config/world.json');
+const defaultColor = defaultConfig.mapsDefaultColor;
+const projectionConfig = defaultConfig.mapsProjectionConfig;
+const geographyStyle = defaultConfig.mapsGeographyStyle;
 
 function InteractiveMap(props) {
   const [tooltipContent, setTooltipContent] = useState('');
@@ -119,10 +105,14 @@ function InteractiveMap(props) {
   return (
     <div>
       <Container>
-        <Typography variant="h6">Interactive Map and Timeline</Typography>
+        <Typography variant="h6">Interactive Map</Typography>
       </Container>
       {loading ? (
-        'loading...'
+        <div>
+          <Container>
+            <Skeleton animation="wave" width={300} height={300} />
+          </Container>
+        </div>
       ) : (
         <Container>
           <Grid container spacing={3}>

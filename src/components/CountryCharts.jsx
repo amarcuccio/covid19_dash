@@ -4,6 +4,8 @@ import { Line } from 'react-chartjs-2';
 import Grid from '@material-ui/core/Grid';
 import ReactCountryFlag from 'react-country-flag';
 import { Container } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { defaultConfig } from '../config';
 
 class CountryCharts extends Component {
   state = {
@@ -23,96 +25,52 @@ class CountryCharts extends Component {
 
   getChartData = async () => {
     try {
-      const URL = `https://api.covid19api.com/total/dayone/country/${this.props.country}`;
+      const URL = `${defaultConfig.chartsURL}${this.props.country}`;
       const response = await fetch(URL);
-      var stats = await response.json();
+      const stats = await response.json();
+      const chartBlue = '#2962FF';
+      const chartOrange = '#FF6D00';
+      const chartGreen = '#00C853';
+      const chartRed = '#D50000';
       const linedata = {
         labels: stats.map((item) =>
           moment(new Date(item.Date)).utc().format('MMM D YYYY')
         ),
         datasets: [
           {
+            ...defaultConfig.chartsDatasetGeneric,
             label: 'Confirmed',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#2962FF',
-            borderColor: '#2962FF',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#2962FF',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#2962FF',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
+            backgroundColor: chartBlue,
+            borderColor: chartBlue,
+            pointBorderColor: chartBlue,
+            pointHoverBackgroundColor: chartBlue,
             data: stats.map((item) => item.Confirmed),
           },
           {
+            ...defaultConfig.chartsDatasetGeneric,
             label: 'Active',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#FF6D00',
-            borderColor: '#FF6D00',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#FF6D00',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#FF6D00',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
+            backgroundColor: chartOrange,
+            borderColor: chartOrange,
+            pointBorderColor: chartOrange,
+            pointHoverBackgroundColor: chartOrange,
             data: stats.map((item) => item.Active),
           },
           {
+            ...defaultConfig.chartsDatasetGeneric,
             label: 'Recovered',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#00C853',
-            borderColor: '#00C853',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#00C853',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#00C853',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
+            backgroundColor: chartGreen,
+            borderColor: chartGreen,
+            pointBorderColor: chartGreen,
+            pointHoverBackgroundColor: chartGreen,
             data: stats.map((item) => item.Recovered),
           },
           {
+            ...defaultConfig.chartsDatasetGeneric,
             label: 'Deaths',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#D50000',
-            borderColor: '#D50000',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#D50000',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#D50000',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
+            backgroundColor: chartRed,
+            borderColor: chartRed,
+            pointBorderColor: chartRed,
+            pointHoverBackgroundColor: chartRed,
             data: stats.map((item) => item.Deaths),
           },
         ],
@@ -129,29 +87,7 @@ class CountryCharts extends Component {
 
   render() {
     const { loading, data } = this.state;
-    const options = {
-      legend: {
-        position: 'bottom',
-      },
-      scales: {
-        yAxes: [
-          {
-            scaleLabel: {
-              display: true,
-              labelString: 'Count',
-            },
-          },
-        ],
-        xAxes: [
-          {
-            scaleLabel: {
-              display: true,
-              labelString: 'Date',
-            },
-          },
-        ],
-      },
-    };
+    const options = defaultConfig.chartsOptions;
     return (
       <div>
         {loading ? (
@@ -159,18 +95,21 @@ class CountryCharts extends Component {
         ) : (
           <div>
             <Container>
-              <Grid>
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <ReactCountryFlag
-                      countryCode={this.props.flag}
-                      style={{
-                        width: '5em',
-                        height: '5em',
-                      }}
-                      svg
-                    />
-                  </Grid>
+              <Grid container>
+                <Grid item xs={12} sm={11}>
+                  <Typography variant="h6">
+                    COVID-19 Cases Reported by Type ({this.props.name})
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <ReactCountryFlag
+                    countryCode={this.props.flag}
+                    style={{
+                      width: '5em',
+                      height: '5em',
+                    }}
+                    svg
+                  />
                 </Grid>
               </Grid>
 
