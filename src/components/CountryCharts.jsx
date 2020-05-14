@@ -28,7 +28,7 @@ class CountryCharts extends Component {
       var stats = await response.json();
       const linedata = {
         labels: stats.map((item) =>
-          moment(new Date(item.Date)).format('MMM D YYYY')
+          moment(new Date(item.Date)).utc().format('MMM D YYYY')
         ),
         datasets: [
           {
@@ -130,10 +130,6 @@ class CountryCharts extends Component {
   render() {
     const { loading, data } = this.state;
     const options = {
-      title: {
-        display: true,
-        text: `${this.props.name.toUpperCase()} Case by Case`,
-      },
       legend: {
         position: 'bottom',
       },
