@@ -40,7 +40,7 @@ class Navbar extends Component {
                 <Box display={{ xs: 'inline-block', sm: 'none' }}>
                   <span className={classes.titleTextXs}>COVID-19</span>
                 </Box>{' '}
-                Dashboard
+                Tracker
               </Typography>
               <Button
                 className={classes.button}
