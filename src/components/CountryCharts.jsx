@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-import { Line } from 'react-chartjs-2';
-import Grid from '@material-ui/core/Grid';
-import ReactCountryFlag from 'react-country-flag';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import moment from 'moment';
+import ReactCountryFlag from 'react-country-flag';
+import { Line } from 'react-chartjs-2';
 import { defaultConfig } from '../config';
 
-class CountryCharts extends Component {
+export default class CountryCharts extends Component {
   state = {
     loading: true,
     data: {},
@@ -96,17 +96,15 @@ class CountryCharts extends Component {
           <div>
             <Container>
               <Grid container>
-                <Grid item xs={12} sm={11}>
-                  <Typography variant="h6">
-                    COVID-19 Cases Reported by Type ({this.props.name})
-                  </Typography>
+                <Grid item xs={11}>
+                  <Typography variant="h6">{this.props.name}</Typography>
                 </Grid>
                 <Grid item xs={1}>
                   <ReactCountryFlag
                     countryCode={this.props.flag}
                     style={{
-                      width: '5em',
-                      height: '5em',
+                      width: '2.5em',
+                      height: '2.5em',
                     }}
                     svg
                   />
@@ -125,5 +123,3 @@ class CountryCharts extends Component {
     );
   }
 }
-
-export default CountryCharts;

@@ -5,6 +5,9 @@ const styles = (theme) => ({
   },
   title: {
     marginBottom: '1.5em',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem !important',
+    },
   },
   updated: {
     fontStyle: 'oblique',

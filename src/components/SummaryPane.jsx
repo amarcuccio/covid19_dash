@@ -1,25 +1,23 @@
-import * as React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import SummaryCard from './SummaryCard';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/SummaryPaneStyles';
 import { Divider } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Box from '@material-ui/core/Box';
-
+import SummaryCard from './SummaryCard';
+import styles from '../styles/SummaryPaneStyles';
 class SummaryPane extends Component {
   render() {
     const { classes, summary, loading, updated } = this.props;
-
     return (
       <Container className={classes.root}>
-        <div className={classes.title}>
-          <Typography variant="h6">Global Case Summary</Typography>
-        </div>
+        <Typography variant="h6" className={classes.title}>
+          Global Case Summary
+        </Typography>
+
         <div>
           <Grid
             className={classes.grid}

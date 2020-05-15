@@ -1,6 +1,4 @@
-import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/CreditsDialogStyles';
+import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -14,81 +12,15 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Box from '@material-ui/core/Box';
-import {
-  ReactLogo,
-  NodejsLogo,
-  YarnLogo,
-  GithubLogo,
-  CraLogo,
-  MuiLogo,
-  D3Logo,
-  FaLogo,
-  MomentjsLogo,
-  RsmLogo,
-  ChartjsLogo,
-} from '../images/logos';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/CreditsDialogStyles';
+import { defaultConfig } from '../config';
 
 function CreditsDialog(props) {
   const { classes, open, close } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
-  const tools = [
-    {
-      source: ReactLogo,
-      title: 'React',
-      url: 'https://reactjs.org/',
-    },
-    {
-      source: CraLogo,
-      title: 'Create React App',
-      url: 'https://create-react-app.dev/',
-    },
-    {
-      source: MuiLogo,
-      title: 'Material-UI',
-      url: 'https://material-ui.com/',
-    },
-    {
-      source: D3Logo,
-      title: 'D3.js',
-      url: 'https://d3js.org/',
-    },
-    {
-      source: RsmLogo,
-      title: 'React Simple Maps',
-      url: 'https://www.react-simple-maps.io/',
-    },
-    {
-      source: ChartjsLogo,
-      title: 'Chart.js',
-      url: 'https://www.chartjs.org/',
-    },
-    {
-      source: NodejsLogo,
-      title: 'Node.js',
-      url: 'https://nodejs.org/en/',
-    },
-    {
-      source: YarnLogo,
-      title: 'Yarn',
-      url: 'https://yarnpkg.com/',
-    },
-    {
-      source: GithubLogo,
-      title: 'GitHub',
-      url: 'https://github.com/',
-    },
-    {
-      source: MomentjsLogo,
-      title: 'Moment.js',
-      url: 'https://momentjs.com/',
-    },
-    {
-      source: FaLogo,
-      title: 'Font Awesome',
-      url: 'https://fontawesome.com/',
-    },
-  ];
+  const tools = defaultConfig.dialogTools;
   return (
     <div>
       <Dialog

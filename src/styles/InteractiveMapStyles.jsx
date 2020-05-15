@@ -4,6 +4,11 @@ const styles = (theme) => ({
     textAlign: 'right',
     marginTop: '3em',
   },
+  title: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem !important',
+    },
+  },
 });
 
 export default styles;

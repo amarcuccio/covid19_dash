@@ -1,8 +1,7 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Container } from '@material-ui/core';
-import CountUp from 'react-countup';
 import { withStyles } from '@material-ui/core/styles';
+import CountUp from 'react-countup';
 import styles from '../styles/LinearGradientStyles';
 
 class LinearGradient extends Component {

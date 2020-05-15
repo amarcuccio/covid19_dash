@@ -1,5 +1,12 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Grid from '@material-ui/core/Grid';
+import { Container } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import { Divider } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import Skeleton from '@material-ui/lab/Skeleton';
 import CountryCharts from '../components/CountryCharts';
 import {
   ComposableMap,
@@ -9,22 +16,14 @@ import {
   Sphere,
   ZoomableGroup,
 } from 'react-simple-maps';
-import Grid from '@material-ui/core/Grid';
-import LinearGradient from '../components/LinearGradient';
-import { Container } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import ReactTooltip from 'react-tooltip';
 import ReactCountryFlag from 'react-country-flag';
-import { Divider } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/InteractiveMapStyles';
 import { scaleQuantile } from 'd3-scale';
 import { schemeOranges } from 'd3-scale-chromatic';
 import { select } from 'd3-selection';
 import { format } from 'd3-format';
-import Skeleton from '@material-ui/lab/Skeleton';
+import LinearGradient from '../components/LinearGradient';
+import styles from '../styles/InteractiveMapStyles';
 import { defaultConfig } from '../config';
 
 const d3 = Object.assign(
@@ -106,7 +105,9 @@ function InteractiveMap(props) {
   return (
     <div>
       <Container>
-        <Typography variant="h6">Interactive Map</Typography>
+        <Typography variant="h6" className={classes.title}>
+          Case Breakdown by Country
+        </Typography>
       </Container>
       {loading ? (
         <div>
@@ -115,8 +116,8 @@ function InteractiveMap(props) {
           </Container>
         </div>
       ) : (
-        <Box display={{ xs: 'none', sm: 'block' }}>
-          <Container>
+        <Container>
+          <Box display={{ xs: 'none', sm: 'block' }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 {tooltipContent !== '' && (
@@ -194,15 +195,15 @@ function InteractiveMap(props) {
               </Typography>
               <Divider />
             </div>
-            {chartCountry && (
-              <CountryCharts
-                country={chartCountry}
-                flag={chartFlag}
-                name={chartName}
-              />
-            )}
-          </Container>
-        </Box>
+          </Box>
+          {chartCountry && (
+            <CountryCharts
+              country={chartCountry}
+              flag={chartFlag}
+              name={chartName}
+            />
+          )}
+        </Container>
       )}
     </div>
   );

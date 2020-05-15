@@ -1,16 +1,15 @@
-import * as React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Container } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Box from '@material-ui/core/Box';
-import CreditsDialog from '../components/CreditsDialog';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
 import Typography from '@material-ui/core/Typography';
-import VirusImage from '../images/main/virus.png';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
+import CreditsDialog from '../components/CreditsDialog';
 import styles from '../styles/NavbarStyles';
+import VirusImage from '../images/main/virus.png';
 
 class Navbar extends Component {
   state = {

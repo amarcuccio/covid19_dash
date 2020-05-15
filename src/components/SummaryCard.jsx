@@ -1,15 +1,13 @@
-import * as React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import CountUp from 'react-countup';
 import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/SummaryCardStyles';
+import CountUp from 'react-countup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import styles from '../styles/SummaryCardStyles';
 class SummaryCard extends Component {
   render() {
     const {
