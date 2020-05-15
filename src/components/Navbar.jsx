@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Container } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 import CreditsDialog from '../components/CreditsDialog';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
@@ -34,8 +35,13 @@ class Navbar extends Component {
             <Toolbar>
               <img src={VirusImage} alt="logo" className={classes.logo} />
               <Typography className={classes.title} variant="h6">
-                <span className={classes.titleTextSm}>Coronavirus</span>
-                <span className={classes.titleTextXs}>COVID-19</span> Dashboard
+                <Box display={{ xs: 'none', sm: 'inline-block' }}>
+                  <span className={classes.titleTextSm}>Coronavirus</span>
+                </Box>
+                <Box display={{ xs: 'inline-block', sm: 'none' }}>
+                  <span className={classes.titleTextXs}>COVID-19</span>
+                </Box>{' '}
+                Dashboard
               </Typography>
               <Button
                 className={classes.button}
@@ -44,7 +50,9 @@ class Navbar extends Component {
                 onClick={this.handleOpen}
                 size="large"
               >
-                <span className={classes.buttonText}>About</span>
+                <Box display={{ xs: 'none', sm: 'inline-block' }}>
+                  <span className={classes.buttonText}>About</span>
+                </Box>
               </Button>
             </Toolbar>
           </Container>

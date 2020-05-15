@@ -12,6 +12,7 @@ import {
 import Grid from '@material-ui/core/Grid';
 import LinearGradient from '../components/LinearGradient';
 import { Container } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import ReactTooltip from 'react-tooltip';
@@ -114,88 +115,94 @@ function InteractiveMap(props) {
           </Container>
         </div>
       ) : (
-        <Container>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              {tooltipContent !== '' && (
-                <ReactTooltip place="bottom">
-                  <ReactCountryFlag
-                    countryCode={tooltipFlag}
-                    style={{
-                      display: 'flex !important',
-                      width: '2em',
-                      height: '2em',
-                      marginRight: '1em',
-                    }}
-                    svg
-                  />
-                  {tooltipContent}
-                </ReactTooltip>
-              )}
-              <ComposableMap
-                projectionConfig={projectionConfig}
-                height={350}
-                data-tip=""
-              >
-                <ZoomableGroup>
-                  <Sphere stroke="#212121" strokeWidth={0.25} fill="#AADAFF" />
-                  <Graticule stroke="#212121" strokeWidth={0.25} />
-                  <Geographies geography={geoUrl}>
-                    {({ geographies }) =>
-                      geographies.map((geo) => {
-                        const current = data.find(
-                          (s) => s.CountryCode === geo.properties.ISO_A2
-                        );
-                        return (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            fill={
-                              current
-                                ? colorScale(current.TotalConfirmed)
-                                : defaultColor
-                            }
-                            style={geographyStyle}
-                            onMouseEnter={onMouseEnter(geo)}
-                            onMouseLeave={onMouseLeave}
-                            onClick={() => {
-                              handleClick(geo);
-                            }}
-                          />
-                        );
-                      })
-                    }
-                  </Geographies>
-                </ZoomableGroup>
-              </ComposableMap>
+        <Box display={{ xs: 'none', sm: 'block' }}>
+          <Container>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                {tooltipContent !== '' && (
+                  <ReactTooltip place="bottom">
+                    <ReactCountryFlag
+                      countryCode={tooltipFlag}
+                      style={{
+                        display: 'flex !important',
+                        width: '2em',
+                        height: '2em',
+                        marginRight: '1em',
+                      }}
+                      svg
+                    />
+                    {tooltipContent}
+                  </ReactTooltip>
+                )}
+                <ComposableMap
+                  projectionConfig={projectionConfig}
+                  height={350}
+                  data-tip=""
+                >
+                  <ZoomableGroup>
+                    <Sphere
+                      stroke="#212121"
+                      strokeWidth={0.25}
+                      fill="#AADAFF"
+                    />
+                    <Graticule stroke="#212121" strokeWidth={0.25} />
+                    <Geographies geography={geoUrl}>
+                      {({ geographies }) =>
+                        geographies.map((geo) => {
+                          const current = data.find(
+                            (s) => s.CountryCode === geo.properties.ISO_A2
+                          );
+                          return (
+                            <Geography
+                              key={geo.rsmKey}
+                              geography={geo}
+                              fill={
+                                current
+                                  ? colorScale(current.TotalConfirmed)
+                                  : defaultColor
+                              }
+                              style={geographyStyle}
+                              onMouseEnter={onMouseEnter(geo)}
+                              onMouseLeave={onMouseLeave}
+                              onClick={() => {
+                                handleClick(geo);
+                              }}
+                            />
+                          );
+                        })
+                      }
+                    </Geographies>
+                  </ZoomableGroup>
+                </ComposableMap>
 
-              <LinearGradient data={gradientData} />
+                <LinearGradient data={gradientData} />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <div className={classes.updated}>
-            <Typography variant="caption">
-              This choropleth map uses the{' '}
-              <Link
-                color="secondary"
-                target="_blank"
-                rel="noopener"
-                href="https://observablehq.com/@d3/quantile-quantize-and-threshold-scales"
-              >
-                quantile scale
-              </Link>{' '}
-              method to separate the population.
-            </Typography>
-            <Divider />
-          </div>
-          {chartCountry && (
-            <CountryCharts
-              country={chartCountry}
-              flag={chartFlag}
-              name={chartName}
-            />
-          )}
-        </Container>
+            <div className={classes.updated}>
+              <Typography variant="caption">
+                This choropleth map uses the{' '}
+                <Link
+                  color="secondary"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://observablehq.com/@d3/quantile-quantize-and-threshold-scales"
+                >
+                  quantile scale
+                </Link>{' '}
+                method to separate the population.
+              </Typography>
+              <Divider />
+            </div>
+            {chartCountry && (
+              <CountryCharts
+                country={chartCountry}
+                flag={chartFlag}
+                name={chartName}
+              />
+            )}
+          </Container>
+        </Box>
       )}
     </div>
   );

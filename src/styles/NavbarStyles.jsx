@@ -24,26 +24,11 @@ const styles = (theme) => ({
       paddingRight: '0px',
     },
   },
-  buttonText: {
-    [theme.breakpoints.down('xs')]: {
-      display: 'none',
-    },
-  },
   buttonIcon: {
     [theme.breakpoints.down('xs')]: {
       fontSize: '28px !important',
       marginRight: '-30px',
       paddingRight: '0px',
-    },
-  },
-  titleTextSm: {
-    [theme.breakpoints.down('xs')]: {
-      display: 'none',
-    },
-  },
-  titleTextXs: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
     },
   },
 });
